@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<!--  Copyright 2019 Sebastian Spautz
+
+    This File is Part of "SITWebComponents"
+    <https://github.com/sebastiansIT/SHSWebComponents>.
+
+    SHSWebComponents is free software: you can redistribute it and/or modify
+    it under the terms of the Lesser GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SHSWebComponents is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    Lesser GNU General Public License for more details.
+
+    You should have received a copy of the Lesser GNU General Public License
+    along with SHSWebComponents. If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+  <head>
+    <title>Demo Page for select-image web component</title>
+    <script type="module" src="./src/select-image.js"></script>
+    <style>
+      sit-select-image {
+        width: 400px;
+        max-height: 400px;
+      }
+
+      [role=banner] h1 {
+        margin-bottom: 0;
+      }
+      [role=banner] p {
+        margin-top: 0;
+      }
+
+      figure {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header role="banner">
+      <h1>Image Select Element</h1>
+      <p>A WebComponent by SebastiansIT</p>
+    </header>
+    <main role="main" aria-labelledby="headline_examples">
+      <header>
+        <h2 id="headline_examples">Examples</h2>
+      </header>
+      <section>
+        <header>
+          <h3>Simple Usage</h3>
+        </header>
+        <figure>
+          <sit-select-image id="demo1"
+           value="https://mir-s3-cdn-cf.behance.net/project_modules/1400/21400b42146087.5802935e8c355.jpg"
+           alt="The Castle in the Sky">
+          </sit-select-image>
+          <figcaption><p><a href="https://www.behance.net/gallery/42146087/The-Castle-in-the-Sky">"The Castle in the Sky"</a>
+            by <span>Alex Feliksovich</span> is licensed under
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=ccsearch&atype=html">CC BY-NC-ND 4.0</a></p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <header>
+          <h3>Custom Button Labels</h3>
+        </header>
+        <figure>
+          <sit-select-image id="demo2"
+           value="https://mir-s3-cdn-cf.behance.net/project_modules/fs/bd77d229108703.5ce4847f4c7f6.jpg"
+           alt="Fairy tale_02: Alice's adventures in wonderland"
+           selectlabel="Change" clearlabel="Delete">
+         </sit-select-image>
+         <figcaption><p><a href="https://www.behance.net/gallery/29108703/Fairy-tale_02-Alices-adventures-in-wonderland">"Fairy tale_02: Alice's adventures in wonderland"</a>
+           by <span>Alex Feliksovich</span> is licensed under
+           <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=ccsearch&atype=html">CC BY-NC 4.0</a></p>
+         </figcaption>
+       </figure>
+      </section>
+
+      <section>
+         <header>
+           <h3>Readonly Image-Select-Element</h3>
+         </header>
+         <figure>
+           <sit-select-image id="demo3"
+            value="https://mir-s3-cdn-cf.behance.net/project_modules/1400/0de5d758514363.59ff881b5ec3e.jpg"
+            alt="Fairy tale: The Magic Swan Geese"
+            readonly>
+          </sit-select-image>
+          <figcaption><p><a href="https://www.behance.net/gallery/58514363/Fairy-tale-03-The-Magic-Swan-Geese">"Fairy tale: The Magic Swan Geese"</a>
+            by <span>Alex Feliksovich</span> is licensed under
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=ccsearch&atype=html">CC BY-NC-ND 4.0</a></p>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section>
+         <header>
+           <h3>Disabled Image-Select-Element</h3>
+         </header>
+         <figure>
+           <sit-select-image id="demo4"
+            value="https://mir-s3-cdn-cf.behance.net/project_modules/fs/dfe41b49054909.5ba68e081d7b1.jpg"
+            alt="Fairy tale_01: Little Red Riding Hood"
+            disabled>
+          </sit-select-image>
+          <figcaption><p><a href="https://www.behance.net/gallery/49054909/Fairy-tale_01-Little-Red-Riding-Hood">"Fairy tale_01: Little Red Riding Hood"</a>
+            by <span>Alex Feliksovich</span> is licensed under
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=ccsearch&atype=html">CC BY-NC-ND 4.0</a></p>
+          </figcaption>
+        </figure>
+      </section>
+    </main>
+  </body>
+</html>
