@@ -1,8 +1,8 @@
 {
-  "name": "sitwebcomponents",
+  "name": "@sebastiansit/webcomponents",
   "version": "1.0.0",
   "description": "SebastiansIT WebComponents Collection",
-  "main": "index.js",
+  "browser": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
 	"lint": "./node_modules/.bin/eslint ./"
@@ -15,8 +15,12 @@
     "web",
     "webcomponent"
   ],
-  "author": "Sebastian Spautz",
-  "license": "LGPL-3.0",
+  "author": {
+    "name" : "Sebastian Spautz",
+    "email" : "sitwebcomponents@sebastiansit.de",
+    "url" : "http://human-injection.de/"
+  },
+  "license": "LGPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/sebastiansIT/SHSWebComponents/issues"
   },
