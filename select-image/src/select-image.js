@@ -32,8 +32,12 @@ TEMPLATE.innerHTML = `
     }
 
     img {
-      max-width: 100%;
-      max-height: 100%;
+      min-width: inherit;
+      width: inherit;
+      max-width: inherit;
+      min-height: inherit;
+      height: inherit;
+      max-height: inherit;
     }
 
     #imagecontrols {
