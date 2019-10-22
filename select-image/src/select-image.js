@@ -3,24 +3,50 @@
     This File is Part of "SITWebComponents"
     <https://github.com/sebastiansIT/SHSWebComponents>.
 
-    SHSWebComponents is free software: you can redistribute it and/or modify
+    SITWebComponents is free software: you can redistribute it and/or modify
     it under the terms of the Lesser GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    SHSWebComponents is distributed in the hope that it will be useful,
+    SITWebComponents is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     Lesser GNU General Public License for more details.
 
     You should have received a copy of the Lesser GNU General Public License
-    along with SHSWebComponents. If not, see <http://www.gnu.org/licenses/>.
+    along with SITWebComponents. If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* globals HTMLElement FileReader */
+/** The base for all HTML elements.
+ * @external HTMLElement
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement|MDN web docs}
+ */
+/** The template HTML element.
+  * @external HTMLTemplateElement
+  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement|MDN web docs}
+  */
+/** Reader for files.
+  * Allows us to read the image files.
+  * @external FileReader
+  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/FileReader|MDN web docs}
+  */
 
+/** Contains a WebComponent that acts as a form element to select images.
+  * @module sebastiansit/webcomponents/selectimage
+  */
+
+/** The default label for the button to select a image from the computers storage.
+  * @const {string}
+  */
 const DEFAULT_SELECT_IMAGE_LABEL = 'Select'
-const DEFAULT_CLEAR_IMAGE_LABEL = 'Clear'
+/** The default label for the button to reset the image to its inital value.
+  * @const {string}
+  */
+const DEFAULT_CLEAR_IMAGE_LABEL = 'Reset'
+/** Template for the shadow DOM of the custom element SelectImage
+  * (alias sit-select-image).
+  * @const {external:HTMLTemplateElement}
+  */
 const TEMPLATE = document.createElement('template')
 TEMPLATE.innerHTML = `
   <style>
@@ -58,10 +84,21 @@ TEMPLATE.innerHTML = `
   </span>
 `
 
+/** Custom Element for selecting images in a HTML page.
+  * @class
+  * @customelement sit-select-image
+  * @extends external:HTMLElement
+  */
 class SelectImage extends HTMLElement {
   constructor () {
     super()
 
+    /** Internal field to store the inital value (an image) of the element.
+      * @see module:sebastiansit/webcomponents/selectimage~SelectImage#defaultValue
+      * @private
+      * @member {string}
+      */
+    this._defaultValue = undefined
     this._shadowRoot = this.attachShadow({ mode: 'open' })
     this._shadowRoot.appendChild(TEMPLATE.content.cloneNode(true))
     this._image = this._shadowRoot.querySelector('img')
@@ -83,7 +120,19 @@ class SelectImage extends HTMLElement {
     }
   }
 
+  /** The inital value (an image) of the element
+    * @readonly
+    * @type {string}
+    */
+  get defaultValue () {
+    return this._defaultValue
+  }
+
   /* getter and setter for title attribute are part of HTMLElement */
+
+  connectedCallback () {
+    this._defaultValue = this.value
+  }
 
   static get observedAttributes () {
     return ['value', 'alt', 'disabled', 'selectlabel', 'clearlabel']
@@ -132,10 +181,9 @@ class SelectImage extends HTMLElement {
   }
 }
 
-/**
+/** Select an image from the lokal systems storage.
   * @private
-  * @static
-  * @param {SelectImage} selectImageElement
+  * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement The element to select a image for.
   * @returns {undefined}
   */
 function selectImage (selectImageElement) {
@@ -154,20 +202,20 @@ function selectImage (selectImageElement) {
   fileInput.click()
 }
 
-/**
+/** Remove the selected image and reset to the inital image if one is available.
+  * The inital value is accessable with the defaultValue property.
   * @private
-  * @static
-  * @param {SelectImage} selectImageElement
+  * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement The element to reset.
   * @returns {undefined}
   */
 function removeImage (selectImageElement) {
-  selectImageElement.value = null
+  selectImageElement.value = selectImageElement.defaultValue
 }
 
 /**
   * @private
   * @static
-  * @param {SelectImage} selectImageElement
+  * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement
   * @returns {undefined}
   */
 function initSelectImageElement (selectImageElement) {

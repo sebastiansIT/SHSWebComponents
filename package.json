@@ -5,7 +5,8 @@
   "browser": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"lint": "./node_modules/.bin/eslint ./"
+    "lint": "./node_modules/.bin/eslint **/src/*.js",
+    "doc": "jsdoc -p -r select-image/src/select-image.js -R ./README.md"
   },
   "repository": {
     "type": "git",
@@ -16,9 +17,9 @@
     "webcomponent"
   ],
   "author": {
-    "name" : "Sebastian Spautz",
-    "email" : "sitwebcomponents@sebastiansit.de",
-    "url" : "http://human-injection.de/"
+    "name": "Sebastian Spautz",
+    "email": "sitwebcomponents@sebastiansit.de",
+    "url": "http://human-injection.de/"
   },
   "license": "LGPL-3.0-or-later",
   "bugs": {
@@ -31,6 +32,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "jsdoc": "^3.6.3"
   }
 }
