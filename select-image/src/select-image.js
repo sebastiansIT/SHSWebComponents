@@ -80,7 +80,7 @@ TEMPLATE.innerHTML = `
   <img src="" alt="" />
   <span id="imagecontrols">
     <button id="selectImage" type="button">${DEFAULT_SELECT_IMAGE_LABEL}</button>
-    <button id="clearImage" type="button">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
+    <button id="clearImage" type="button" disabled="disabled">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
   </span>
 `
 
@@ -227,6 +227,7 @@ function initSelectImageElement (selectImageElement) {
     event.preventDefault()
 
     selectImage(selectImageElement)
+    clearButton.disabled = false
   })
 
   clearButton.addEventListener('click', (event) => {
@@ -234,6 +235,7 @@ function initSelectImageElement (selectImageElement) {
     event.preventDefault()
 
     removeImage(selectImageElement)
+    event.target.disabled = true
   })
 }
 
