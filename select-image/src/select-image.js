@@ -66,6 +66,27 @@ TEMPLATE.innerHTML = `
       max-height: inherit;
     }
 
+    @supports(background:revert) {
+      button {
+        background: var(--sit-button-background, revert);
+        margin: var(--sit-button-margin, revert);
+        border: var(--sit-button-border, revert);
+        border-radius: var(--sit-button-radius, revert);
+        padding: var(--sit-button-padding, revert);
+        font: var(--sit-button-font, revert);
+      }
+      button:hover:not([disabled]) {
+        text-decoration: var(--sit-button-hover-decoration, revert);
+      }
+      button:focus {
+        text-decoration: var(--sit-button-focus-decoration, revert);
+      }
+      button:active {
+        background: var(--sit-button-active-background, revert);
+        border: var(--sit-button-active-border, revert);
+      }
+    }
+
     #imagecontrols {
       position: absolute;
       bottom: 0;
