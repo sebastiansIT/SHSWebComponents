@@ -99,9 +99,11 @@ TEMPLATE.innerHTML = `
     }
   </style>
   <img src="" alt="" />
-  <span id="imagecontrols">
-    <button id="selectImage" type="button">${DEFAULT_SELECT_IMAGE_LABEL}</button>
-    <button id="clearImage" type="button">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
+  <span id="imagecontrols" part="sit-select-image-toolbar">
+    <button id="selectImage" type="button"
+      part="sit-select-image-select-button">${DEFAULT_SELECT_IMAGE_LABEL}</button>
+    <button id="clearImage" type="button"
+      part="sit-select-image-reset-button">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
   </span>
 `
 

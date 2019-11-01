@@ -39,7 +39,7 @@
       figure {
         margin-left: 0;
         margin-right: 0;
-        border: lightgrey solid 1px;
+        border: grey solid 1px;
       }
 
       figure > * {
@@ -137,7 +137,7 @@
 
       <section id="demo5_section">
         <header>
-           <h3>Image-Select-Element with styled buttons</h3>
+           <h3>Image-Select-Element with styled buttons (custom properties)</h3>
          </header>
          <style>
          #demo5_section {
@@ -155,6 +155,8 @@
            --sit-button-active-border: #006400 inset 0.2rem;
          }
          </style>
+         <p>The feature I used for this demo isn't available in all browsers jet.
+           Now (2019-11-01) Firefox supports it.</p>
          <figure>
            <sit-select-image id="demo5"
             value="https://mir-s3-cdn-cf.behance.net/project_modules/fs/03e65a29094307.55e1d4c182fc3.jpg"
@@ -184,6 +186,74 @@
 &lt;/style&gt;</code></pre>
           <figcaption><p>Code example for a styling of the internal buttons of
             a select-image element.</p></figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <header>
+           <h3>Image-Select-Element with styled buttons (::parts)</h3>
+         </header>
+         <style>
+         #demo6::part(sit-select-image-select-button) {
+           background: linear-gradient(180deg, white 0%, white 40%, orange 100%);
+         }
+
+         #demo6::part(sit-select-image-select-button):hover,
+         #demo6::part(sit-select-image-reset-button):hover {
+           text-decoration: underline;
+         }
+
+         #demo6::part(sit-select-image-select-button):focus,
+         #demo6::part(sit-select-image-reset-button):focus {
+           text-decoration: underline;
+           outline: none:
+         }
+
+         #demo6::part(sit-select-image-select-button):active {
+           background: linear-gradient(180deg, orange 0%, white 40%, white 100%);
+           border-style: inset;
+         }
+
+         #demo6::part(sit-select-image-reset-button) {
+           background: linear-gradient(180deg, white 0%, white 40%, grey 100%);
+         }
+
+         #demo6::part(sit-select-image-reset-button):active {
+           background: linear-gradient(180deg, grey 0%, white 40%, white 100%);
+           border-style: inset;
+         }
+         </style>
+         <p>The feature I used for this demo isn't available in all browsers jet.
+           Now (2019-11-01) chromium based browsers like Vivaldi supports it.
+           See <a href="https://caniuse.com/#feat=mdn-css_selectors_part">caniuse.com</a>
+           for more details.</p>
+         <figure>
+           <sit-select-image id="demo6"
+            value="https://mir-s3-cdn-cf.behance.net/project_modules/disp/3631d217538959.562bbd4f76a83.jpg"
+            alt="Travel begins">
+          </sit-select-image>
+          <figcaption><p><a href="https://www.behance.net/gallery/17538959/Travel-begins">"Travel begins"</a>
+            by <span>Alex Feliksovich</span> is licensed under
+            <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=ccsearch&atype=html">CC BY-NC 4.0</a></p>
+          </figcaption>
+        </figure>
+        <figure class="code">
+         <pre><code>&lt;style&gt;
+  #demo6::part(sit-select-image-select-button) {
+   background: linear-gradient(180deg, white 0%, white 40%, orange 100%);
+  }
+
+  #demo6::part(sit-select-image-reset-button) {
+    background: linear-gradient(180deg, white 0%, white 40%, grey 100%);
+  }
+
+  #demo6::part(sit-select-image-select-button):hover,
+  #demo6::part(sit-select-image-reset-button):hover {
+   text-decoration: underline;
+  }
+&lt;/style&gt;</code></pre>
+          <figcaption><p>Code example for a styling of the internal buttons of
+            a select-image element with the part() pseudo class.</p></figcaption>
         </figure>
       </section>
     </main>
