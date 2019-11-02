@@ -58,6 +58,7 @@ TEMPLATE.innerHTML = `
     }
 
     img {
+      display: none;
       min-width: inherit;
       width: inherit;
       max-width: inherit;
@@ -65,11 +66,22 @@ TEMPLATE.innerHTML = `
       height: inherit;
       max-height: inherit;
     }
+    img[src] {
+      display: inline;
+    }
 
     #imagecontrols {
       position: absolute;
       bottom: 0;
       right: 0;
+      font: inherit;
+      text-align: right;
+    }
+
+    @media print {
+      #imagecontrols {
+        display: none;
+      }
     }
 
     /* Selects ths controls inside the shadow root host, only if the host is readonly */
@@ -77,10 +89,12 @@ TEMPLATE.innerHTML = `
       display: none;
     }
   </style>
-  <img src="" alt="" />
-  <span id="imagecontrols">
-    <button id="selectImage" type="button">${DEFAULT_SELECT_IMAGE_LABEL}</button>
-    <button id="clearImage" type="button" disabled="disabled">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
+  <img alt="" />
+  <span id="imagecontrols" part="sit-select-image-toolbar">
+    <button id="selectImage" type="button"
+      part="sit-select-image-select-button">${DEFAULT_SELECT_IMAGE_LABEL}</button>
+    <button id="clearImage" type="button"
+      part="sit-select-image-reset-button">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
   </span>
 `
 
