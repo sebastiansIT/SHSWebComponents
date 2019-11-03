@@ -117,7 +117,7 @@ TEMPLATE.innerHTML = `
   <span id="imagecontrols" part="sit-select-image-toolbar">
     <button id="selectImage" type="button"
       part="sit-select-image-select-button">${DEFAULT_SELECT_IMAGE_LABEL}</button>
-    <button id="clearImage" type="button"
+    <button id="clearImage" type="button" disabled="disabled"
       part="sit-select-image-reset-button">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
   </span>
 `
