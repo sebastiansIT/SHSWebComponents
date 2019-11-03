@@ -70,6 +70,30 @@ TEMPLATE.innerHTML = `
       display: inline;
     }
 
+    @supports(background:revert) {
+      button {
+        width: var(--sit-button-width, revert);
+        background: var(--sit-button-background, revert);
+        margin: var(--sit-button-margin, revert);
+        border: var(--sit-button-border, revert);
+        border-radius: var(--sit-button-radius, revert);
+        padding: var(--sit-button-padding, revert);
+        font: var(--sit-button-font, revert);
+      }
+      button:hover:not([disabled]) {
+        border: var(--sit-button-hover-border, revert);
+        text-decoration: var(--sit-button-hover-decoration, revert);
+      }
+      button:focus {
+        border: var(--sit-button-focus-border, revert);
+        text-decoration: var(--sit-button-focus-decoration, revert);
+      }
+      button:active {
+        background: var(--sit-button-active-background, revert);
+        border: var(--sit-button-active-border, revert);
+      }
+    }
+
     #imagecontrols {
       position: absolute;
       bottom: 0;
