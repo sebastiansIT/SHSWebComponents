@@ -253,6 +253,7 @@ function initSelectImageElement (selectImageElement) {
     event.preventDefault()
 
     selectImage(selectImageElement)
+    clearButton.disabled = false
   })
 
   clearButton.addEventListener('click', (event) => {
@@ -260,6 +261,7 @@ function initSelectImageElement (selectImageElement) {
     event.preventDefault()
 
     removeImage(selectImageElement)
+    event.target.disabled = true
   })
 }
 
