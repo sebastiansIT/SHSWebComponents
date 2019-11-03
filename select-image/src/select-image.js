@@ -66,6 +66,30 @@ TEMPLATE.innerHTML = `
       max-height: inherit;
     }
 
+    @supports(background:revert) {
+      button {
+        width: var(--sit-button-width, revert);
+        background: var(--sit-button-background, revert);
+        margin: var(--sit-button-margin, revert);
+        border: var(--sit-button-border, revert);
+        border-radius: var(--sit-button-radius, revert);
+        padding: var(--sit-button-padding, revert);
+        font: var(--sit-button-font, revert);
+      }
+      button:hover:not([disabled]) {
+        border: var(--sit-button-hover-border, revert);
+        text-decoration: var(--sit-button-hover-decoration, revert);
+      }
+      button:focus {
+        border: var(--sit-button-focus-border, revert);
+        text-decoration: var(--sit-button-focus-decoration, revert);
+      }
+      button:active {
+        background: var(--sit-button-active-background, revert);
+        border: var(--sit-button-active-border, revert);
+      }
+    }
+
     #imagecontrols {
       position: absolute;
       bottom: 0;
@@ -78,9 +102,11 @@ TEMPLATE.innerHTML = `
     }
   </style>
   <img src="" alt="" />
-  <span id="imagecontrols">
-    <button id="selectImage" type="button">${DEFAULT_SELECT_IMAGE_LABEL}</button>
-    <button id="clearImage" type="button" disabled="disabled">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
+  <span id="imagecontrols" part="sit-select-image-toolbar">
+    <button id="selectImage" type="button"
+      part="sit-select-image-select-button">${DEFAULT_SELECT_IMAGE_LABEL}</button>
+    <button id="clearImage" type="button"
+      part="sit-select-image-reset-button">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
   </span>
 `
 
