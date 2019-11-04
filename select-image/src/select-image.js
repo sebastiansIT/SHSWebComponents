@@ -21,32 +21,38 @@
  * @external HTMLElement
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement|MDN web docs}
  */
+
 /** The template HTML element.
-  * @external HTMLTemplateElement
-  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement|MDN web docs}
-  */
+ * @external HTMLTemplateElement
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement|MDN web docs}
+ */
+
 /** Reader for files.
-  * Allows us to read the image files.
-  * @external FileReader
-  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/FileReader|MDN web docs}
-  */
+ * Allows us to read the image files.
+ * @external FileReader
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/FileReader|MDN web docs}
+ */
 
 /** Contains a WebComponent that acts as a form element to select images.
-  * @module sebastiansit/webcomponents/selectimage
-  */
+ * @module sebastiansit/webcomponents/selectimage
+ */
 
 /** The default label for the button to select a image from the computers storage.
-  * @const {string}
-  */
+ * @constant {string}
+ */
 const DEFAULT_SELECT_IMAGE_LABEL = 'Select'
-/** The default label for the button to reset the image to its inital value.
-  * @const {string}
-  */
+
+/**
+   The default label for the button to reset the image to its inital value.
+ * @constant {string}
+ */
 const DEFAULT_CLEAR_IMAGE_LABEL = 'Reset'
+
 /** Template for the shadow DOM of the custom element SelectImage
-  * (alias sit-select-image).
-  * @const {external:HTMLTemplateElement}
-  */
+ * (alias sit-select-image).
+
+ * @constant {external:HTMLTemplateElement}
+ */
 const TEMPLATE = document.createElement('template')
 TEMPLATE.innerHTML = `
   <style>
@@ -123,19 +129,19 @@ TEMPLATE.innerHTML = `
 `
 
 /** Custom Element for selecting images in a HTML page.
-  * @class
-  * @customelement sit-select-image
-  * @extends external:HTMLElement
-  */
+ * @class
+ * @customElement sit-select-image
+ * @augments external:HTMLElement
+ */
 class SelectImage extends HTMLElement {
   constructor () {
     super()
 
     /** Internal field to store the inital value (an image) of the element.
-      * @see module:sebastiansit/webcomponents/selectimage~SelectImage#defaultValue
-      * @private
-      * @member {string}
-      */
+     * @see module:sebastiansit/webcomponents/selectimage~SelectImage#defaultValue
+     * @private
+     * @member {string}
+     */
     this._defaultValue = undefined
     this._shadowRoot = this.attachShadow({ mode: 'open' })
     this._shadowRoot.appendChild(TEMPLATE.content.cloneNode(true))
@@ -158,10 +164,13 @@ class SelectImage extends HTMLElement {
     }
   }
 
-  /** The inital value (an image) of the element
-    * @readonly
-    * @type {string}
-    */
+  /** The inital value (an image) of the element.
+   *
+   * @readonly
+   * @type {string}
+   * @example <caption>Select the first SelectImage element and read the default value.</caption>
+   * const defaultValue = document.getElementsByTagName('sit-select-image')[0].defaultValue
+   */
   get defaultValue () {
     return this._defaultValue
   }
@@ -220,10 +229,11 @@ class SelectImage extends HTMLElement {
 }
 
 /** Select an image from the lokal systems storage.
-  * @private
-  * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement The element to select a image for.
-  * @returns {undefined}
-  */
+ *
+ * @private
+ * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement - The element to select a image for.
+ * @returns {undefined}
+ */
 function selectImage (selectImageElement) {
   const fileInput = document.createElement('input')
   fileInput.setAttribute('type', 'file')
@@ -241,21 +251,22 @@ function selectImage (selectImageElement) {
 }
 
 /** Remove the selected image and reset to the inital image if one is available.
-  * The inital value is accessable with the defaultValue property.
-  * @private
-  * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement The element to reset.
-  * @returns {undefined}
-  */
+ * The inital value is accessable with the defaultValue property.
+ * @private
+ * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement - The element to reset.
+ * @returns {undefined}
+ */
 function removeImage (selectImageElement) {
   selectImageElement.value = selectImageElement.defaultValue
 }
 
-/**
-  * @private
-  * @static
-  * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement
-  * @returns {undefined}
-  */
+/** Inits a SelectImage element. Primarily it adds event listener to the
+ * elements in the shadow DOM.
+ * @private
+ * @static
+ * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement - The element to init.
+ * @returns {undefined}
+ */
 function initSelectImageElement (selectImageElement) {
   const selectButton = selectImageElement._selectButton
   const clearButton = selectImageElement._clearButton
@@ -277,4 +288,5 @@ function initSelectImageElement (selectImageElement) {
   })
 }
 
+/* Register the custom element SelectImage with tag name "sit-select-image". */
 window.customElements.define('sit-select-image', SelectImage)
