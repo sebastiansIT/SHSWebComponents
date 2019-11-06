@@ -1,5 +1,5 @@
 # SITWebComponents
-My personal collection of Web Components
+[My](https://github.com/sebastiansit) personal collection of Web Components
 
 ## Components
 At the moment there is only one WebComponent named [select image](select-image/README.md).
