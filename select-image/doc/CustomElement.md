@@ -1,0 +1,46 @@
+# <sit-select-image> Custom HMTL Element
+The custom HTML element <sit-select-image> embeds an input element for images into the document.
+
+## HTML Attributes
+You can use the attributes "value", "alt", "disabled", "readonly"
+"selectlabel" and "clearlabel".
+
+<dl>
+<dt>alt</dt>
+<dd>A String used as an alternative text description of the image inside of
+the element.</dd>
+
+<dt>clearlabel</dt>
+<dd>A String used as the label of the button to clear the selected image.</dd>
+
+<dt>disabled</dt>
+<dd><p>A Boolean attribute which, if present, indicates that the user should
+not be able to interact with the input.</p>
+<p>The buttons inside of the element are declared as disabled if you set
+this attribute.</p></dd>
+
+<dt>readonly</dt>
+<dd><p>A Boolean attribute which, if present, indicates that the user should
+not be able to edit the value of the input.</p>
+<p>The buttons inside of the element are invisible if you set this
+attribute.</p></dd>
+
+<dt>selectlabel</dt>
+<dd>A String used as the label of the button to select another image.</dd>
+
+<dt>value</dt>
+<dd>The URL of the image. If the User select a image this attribute is changed
+to a data URL representing the selected image.</dd>
+</dl>
+
+## Styling width CSS
+You can stlye this element as normal with CSS. Per default the element is a
+inline flex container that shows it's flex items verticaly and horizontaly
+centered.
+
+In addidion it has a value of relative for the property position.
+
+## Javascript
+This custom element is represented by the SelectInput class in the DOM.
+SelectInput inherits HTMLElement and provide all methods and events
+declared there.
