@@ -6,13 +6,13 @@ This is the description for the shadow DOM of the web component
 The shadow DOM contains an image and two buttons. The buttons are grouped by
 an span with the class **imagecontrols** element.
 
-    &lt;img alt="" /&gt;
-    &lt;span id="imagecontrols" part="sit-select-image-toolbar"&gt;
-      &lt;button id="selectImage" type="button"
-        part="sit-select-image-select-button"&gt;${DEFAULT_SELECT_IMAGE_LABEL}&lt;/button&gt;
-      &lt;button id="clearImage" type="button" disabled="disabled"
-        part="sit-select-image-reset-button"&gt;${DEFAULT_CLEAR_IMAGE_LABEL}&lt;/button&gt;
-    &lt;/span&gt;
+    <img alt="" />
+    <span id="imagecontrols" part="sit-select-image-toolbar">
+      <button id="selectImage" type="button"
+        part="sit-select-image-select-button">${DEFAULT_SELECT_IMAGE_LABEL}</button>
+      <button id="clearImage" type="button" disabled="disabled"
+        part="sit-select-image-reset-button">${DEFAULT_CLEAR_IMAGE_LABEL}</button>
+    </span>
 
 ## Styling
 To style the shadow DOM I support two technics.
