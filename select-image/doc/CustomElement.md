@@ -1,5 +1,8 @@
-# <sit-select-image> Custom HTML Element
-The custom HTML element <sit-select-image> embeds an input element for images into the document.
+# &lt;it-select-image&gt; Custom HTML Element
+The custom HTML element &lt;sit-select-image&gt; embeds an input element for images
+into the document.
+
+It is the HTML representation of the web component [select-image](../README.md).
 
 ## HTML Attributes
 You can use the attributes "value", "alt", "disabled", "readonly"
@@ -38,9 +41,12 @@ You can stlye this element as normal with CSS. Per default the element is a
 inline flex container that shows it's flex items verticaly and horizontaly
 centered.
 
-In addidion it has a value of relative for the property position.
+In addition it has a value of relative for the property position.
+
+The shadow DOM can styled in a limited way. Concrete information are on the
+page [Shadow DOM](./SadowDOM.md).
 
 ## Javascript
-This custom element is represented by the SelectInput class in the DOM.
-SelectInput inherits HTMLElement and provide all methods and events
-declared there.
+This custom element is represented by the [SelectInputElement](./JSAPI.md) class
+in the DOM. SelectInputElement inherits from HTMLElement and provide all methods
+and events declared there.

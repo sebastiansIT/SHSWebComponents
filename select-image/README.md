@@ -8,9 +8,9 @@ You can see some examples as part of the [demo page](./demo.html).
 
 ## Documentation
 
-# [&lt;sit-select-image&gt;](./doc/CustomElement.md)
-# [SelectImage](./doc/JSAPI.md)
-# [ShadowDOM](./doc/ShadowDOM.md)
+1. [&lt;sit-select-image&gt;](./doc/CustomElement.md)
+1. [SelectImage](./doc/JSAPI.md)
+1. [ShadowDOM](./doc/ShadowDOM.md)
 
 ## Prerequisite
 
@@ -32,6 +32,6 @@ To style the shadow DOM support for addidional features is needed:
 - [CSS Cascading and Inheritance Level 4 revert keyword](https://developer.mozilla.org/en-US/docs/Web/CSS/revert#Specifications)
 - [CSS Shadow Parts](https://developer.mozilla.org/en-US/docs/Web/CSS/::part#Specifications)
 
-For more information about styling see my [documentation](./doc/ShadowDOM.md). 
+For more information about styling see my [documentation](./doc/ShadowDOM.md).
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
