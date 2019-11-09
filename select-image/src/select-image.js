@@ -133,7 +133,7 @@ TEMPLATE.innerHTML = `
  * @customElement sit-select-image
  * @augments external:HTMLElement
  */
-class SelectImage extends HTMLElement {
+class SelectImageElement extends HTMLElement {
   constructor () {
     super()
 
@@ -289,4 +289,4 @@ function initSelectImageElement (selectImageElement) {
 }
 
 /* Register the custom element SelectImage with tag name "sit-select-image". */
-window.customElements.define('sit-select-image', SelectImage)
+window.customElements.define('sit-select-image', SelectImageElement)

@@ -7,11 +7,11 @@ You can use the attributes "value", "alt", "disabled", "readonly"
 
 <dl>
 <dt>alt</dt>
-<dd>A String used as an alternative text description of the image inside of
-the element.</dd>
+<dd><p>A String used as an alternative text description of the image inside of
+the element.</p></dd>
 
 <dt>clearlabel</dt>
-<dd>A String used as the label of the button to clear the selected image.</dd>
+<dd><p>A String used as the label of the button to clear the selected image.</p></dd>
 
 <dt>disabled</dt>
 <dd><p>A Boolean attribute which, if present, indicates that the user should
@@ -26,11 +26,11 @@ not be able to edit the value of the input.</p>
 attribute.</p></dd>
 
 <dt>selectlabel</dt>
-<dd>A String used as the label of the button to select another image.</dd>
+<dd><p>A String used as the label of the button to select another image.</p></dd>
 
 <dt>value</dt>
-<dd>The URL of the image. If the User select a image this attribute is changed
-to a data URL representing the selected image.</dd>
+<dd><p>The URL of the image. If the User select a image this attribute is changed
+to a data URL representing the selected image.</p></dd>
 </dl>
 
 ## Styling width CSS
