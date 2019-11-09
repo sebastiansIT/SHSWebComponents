@@ -1,7 +1,8 @@
 # SelectImageElement
-The SelectImageElement class represents a <sit-select-image> Element. These
+The SelectImageElement class represents a &lt;sit-select-image&gt; Element. These
 elements also share all of the properties and methods of other HTML elements
-via the [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) interface.
+via the [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement)
+interface.
 
 ## Properties
 This class inherits the properties of [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement),

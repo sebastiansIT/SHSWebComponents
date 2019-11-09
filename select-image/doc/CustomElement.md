@@ -1,4 +1,4 @@
-# &lt;it-select-image&gt; Custom HTML Element
+# &lt;sit-select-image&gt; Custom HTML Element
 The custom HTML element &lt;sit-select-image&gt; embeds an input element for images
 into the document.
 
