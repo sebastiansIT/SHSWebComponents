@@ -6,8 +6,10 @@ It allows you to select a image file from your local storage. The selected image
 ## Examples
 You can see some examples as part of the [demo page](./demo.html).
 
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-
 ## Documentation
 
 * [&lt;sit-select-image&gt;](./doc/CustomElement.md)
+* [SelectImage](./doc/JSAPI.md)
+* [ShadowDOM](./doc/ShadowDOM.md)
+
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
