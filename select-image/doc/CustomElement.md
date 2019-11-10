@@ -19,7 +19,7 @@ the element.</p></dd>
 <dt>disabled</dt>
 <dd><p>A Boolean attribute which, if present, indicates that the user should
 not be able to interact with the input.</p>
-<p>The buttons inside of the element are declared as disabled if you set
+<p>The buttons inside of the element are declared as **disabled** if you set
 this attribute.</p></dd>
 
 <dt>readonly</dt>
@@ -44,7 +44,7 @@ centered.
 In addition it has a value of relative for the property position.
 
 The shadow DOM can styled in a limited way. Concrete information are on the
-page [Shadow DOM](./SadowDOM.md).
+page [Shadow DOM](./ShadowDOM.md).
 
 ## Javascript
 This custom element is represented by the [SelectInputElement](./JSAPI.md) class

@@ -4,7 +4,7 @@ This is the description for the shadow DOM of the web component
 
 ## DOM Structure
 The shadow DOM contains an image and two buttons. The buttons are grouped by
-an span with the class **imagecontrols** element.
+an span element with the class **imagecontrols**.
 
     <img alt="" />
     <span id="imagecontrols" part="sit-select-image-toolbar">
@@ -21,7 +21,7 @@ To style the shadow DOM I support two technics.
 
 Custom properties can pierce the shadow DOM boundaries. But there is a problem:
 If you set a custom property as a value to a regular propery and the custom
-property isn't set the regualar property is unset. In such a case the default
+property isn't set, the regualar property would be **unset**. In such a case the default
 style is broken. To solve this the keyword **revert** is used. But **revert**
 isn't supported in the most browsers (only Firefox at the moment).
 
@@ -68,6 +68,8 @@ The following CSS custom properties are declared:
   <dd><p>The border of the buttons when they are active.</p></dd>
 </dl>
 
+There is an example for this on the [demo page](../demo.html#demo5_section).
+
 ### Parts
 
 You can declare some elements in the shadow DOM as parts. With the pseudo
@@ -85,3 +87,5 @@ The declared parts are&hellip;
   <dt>sit-select-image-reset-button</dt>
   <dd><p>The HTMLButtonElement to reset the selected image.</p></dd>
 </dt>
+
+There is an example for this on the [demo page](../demo.html#demo6_section).
