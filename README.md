@@ -1,5 +1,7 @@
+<img alt="Logo &quot;Web Components&quot; with text &quot;SebastiansIT Collection of Web Components&quot;."
+  src="./logo_340.png" width="128" height="128" style="float:left; border-radius:2em; margin-left:1em;" />
+
 # SITWebComponents
-![Logo "Web Components" with text "SebastiansIT Collection of Web Components".](./logo_340.png)
 [My](https://github.com/sebastiansit) personal collection of Web Components
 
 ## Components
