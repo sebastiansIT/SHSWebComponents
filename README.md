@@ -1,5 +1,5 @@
 <img alt="Logo &quot;Web Components&quot; with text &quot;SebastiansIT Collection of Web Components&quot;."
-  src="./logo_340.png" width="128" height="128" style="float:left; border-radius:2em; margin-left:1em;" />
+  src="./logo_340.png" width="128" height="128" style="float:left; border-radius:2em; margin-right:1em;" />
 
 # SITWebComponents
 [My](https://github.com/sebastiansit) personal collection of Web Components
@@ -13,7 +13,7 @@ In the actual pre release phase there is no public NPM package you can install. 
 ## License
 The Software itself is published under a [GNU LESSER GENERAL PUBLIC LICENSE](./LICENSE).
 
-My logo for the component based on a [logo for Web Components](https://github.com/webcomponents/webcomponents-icons)
+My logo for the collectin based on a [logo for Web Components](https://github.com/webcomponents/webcomponents-icons)
 created by WebComponents.org. The original logo is licensed under a [Creative Commons BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US). In fact of this
 my derived logo is also licensed under Creative Commons BY-SA 3.0.
 
