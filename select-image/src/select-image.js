@@ -162,6 +162,14 @@ class SelectImageElement extends HTMLElement {
     } else {
       this.removeAttribute('value')
     }
+
+    // In fact of execution order normaly the event is dipatched before the
+    // render prozess showing the new Image. The timeout reoder the execution.
+    window.setTimeout(() => {
+      this.dispatchEvent(
+        new CustomEvent('change', { detail: { value: value } })
+      )
+    }, 0)
   }
 
   /** The inital value (an image) of the element.
