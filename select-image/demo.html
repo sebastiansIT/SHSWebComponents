@@ -100,7 +100,7 @@
 
       <section>
         <header>
-          <h3>Custom Button Labels</h3>
+          <h3>Custom Button Labels and Change Listener</h3>
         </header>
         <figure>
           <sit-select-image id="demo2"
@@ -114,12 +114,20 @@
        </figure>
        <figure class="code">
          <pre><code>&lt;sit-select-image
+  id="example"
   value="someImage.jpg" alt="Alternative Text"
   selectlabel="<var>Change</var>"
   clearlabel="<var>Delete</var>"&gt;
-&lt;sit-select-image&gt;</code></pre>
+&lt;/sit-select-image&gt;
+&lt;script&gt;document.getElementById('example')
+   .addEventListener('change',
+      event => alert(`Image changed to ${event.detail.value}.`))
+&lt;/script&gt;</code></pre>
           <figcaption><p>Code example for a select-image element with cutsom button labels.</p></figcaption>
         </figure>
+        <script>
+          document.getElementById('demo2').addEventListener('change', event => alert(`Image Changed to ${event.detail.value}.`))
+        </script>
       </section>
 
       <section>

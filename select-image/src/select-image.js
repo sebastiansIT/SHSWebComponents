@@ -33,6 +33,11 @@
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/FileReader|MDN web docs}
  */
 
+/** Interface for custom events.
+ * @external CustomEvent
+ * @see {@link https://developer.mozilla.org/de/docs/Web/API/CustomEvent|MDN web docs}
+ */
+
 /** Contains a WebComponent that acts as a form element to select images.
  * @module sebastiansit/webcomponents/selectimage
  */
@@ -156,12 +161,25 @@ class SelectImageElement extends HTMLElement {
     return this.getAttribute('value')
   }
 
+  /** The value of the SelectImageElement.
+   * @type {string}
+   * @param {string} value - The new value to set.
+   * @fires module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
+   */
   set value (value) {
     if (value) {
       this.setAttribute('value', value)
     } else {
       this.removeAttribute('value')
     }
+
+    // In fact of execution order normaly the event is dipatched before the
+    // render prozess showing the new Image. The timeout reoder the execution.
+    window.setTimeout(() => {
+      this.dispatchEvent(
+        new CustomEvent('change', { detail: { value: value } })
+      )
+    }, 0)
   }
 
   /** The inital value (an image) of the element.
@@ -228,11 +246,18 @@ class SelectImageElement extends HTMLElement {
   }
 }
 
+/** Event fired when the value of the SelectImage element is changed.
+ * @event module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
+ * @type {external:CustomEvent}
+ * @property {string} detail.value - The new value of the SelectImage-Element.
+ */
+
 /** Select an image from the lokal systems storage.
  *
  * @private
  * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement - The element to select a image for.
  * @returns {undefined}
+ * @fires module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
  */
 function selectImage (selectImageElement) {
   const fileInput = document.createElement('input')
@@ -255,6 +280,7 @@ function selectImage (selectImageElement) {
  * @private
  * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement - The element to reset.
  * @returns {undefined}
+ * @fires module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
  */
 function removeImage (selectImageElement) {
   selectImageElement.value = selectImageElement.defaultValue
