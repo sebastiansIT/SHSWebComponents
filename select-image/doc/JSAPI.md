@@ -24,4 +24,8 @@ and of [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) and
 This class contains no own public methods.
 
 ## Events
-This class fires no own event.
+Listen to these events using addEventListener().
+<dl>
+  <dt>change</dt>
+  <dd>Fires when the value of an <sit-select-image> element has been changed. The Event has one Property detail.value containing the actual value.</dd>
+</dl>
