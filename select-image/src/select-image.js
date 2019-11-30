@@ -27,6 +27,11 @@
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement|MDN web docs}
  */
 
+/** The button HTML element.
+ * @external HTMLButtonElement
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement|MDN web docs}
+ */
+
 /** Reader for files.
  * Allows us to read the image files.
  * @external FileReader
@@ -151,11 +156,23 @@ class SelectImageElement extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: 'open' })
     this._shadowRoot.appendChild(TEMPLATE.content.cloneNode(true))
     this._image = this._shadowRoot.querySelector('img')
+    /** Internal field for the button "select" in the shadow DOM.
+     * @private
+     * @member {external:HTMLButtonElement}
+     */
     this._selectButton = this._shadowRoot.querySelector('#selectImage')
-    this._clearButton = this._shadowRoot.querySelector('#clearImage')
+    /** Internal field for the button "revert" in the shadow DOM.
+     * @private
+     * @member {external:HTMLButtonElement}
+     */
+    this._revertButton = this._shadowRoot.querySelector('#clearImage')
 
     initSelectImageElement(this)
   }
+
+  /* =======================================================================
+     ============================ Properties ===============================
+     ======================================================================= */
 
   get value () {
     return this.getAttribute('value')
@@ -195,6 +212,57 @@ class SelectImageElement extends HTMLElement {
 
   /* getter and setter for title attribute are part of HTMLElement */
 
+  /* =======================================================================
+     ========================== Public Methods ====??=======================
+     ======================================================================= */
+
+  /** Select an image from the lokal systems storage.
+   * This function can only be called in direct response to a user interaction.
+   * Other calls will be ignored by the user agend.
+   * @returns {undefined}
+   * @fires module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
+   */
+  select () {
+    const fileInput = document.createElement('input')
+    fileInput.setAttribute('type', 'file')
+    fileInput.setAttribute('accept', 'image/*')
+    fileInput.addEventListener('change', function (event) {
+      if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader()
+        reader.onload = function (event) {
+          this.value = event.target.result
+        }.bind(this)
+        reader.readAsDataURL(event.target.files[0])
+      }
+    }.bind(this))
+    fileInput.click()
+  }
+
+  /** Reset the element to the inital image if one is available.
+   * The inital value is accessable with the defaultValue property.
+   * @returns {undefined}
+   * @fires module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
+   */
+  revert () {
+    this.value = this.defaultValue
+    this._revertButton.disabled = true
+  }
+
+  /** Remove the actual image. Unlike revert(), the default value is ignored.
+   * @returns {undefined}
+   * @fires module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
+   */
+  clear () {
+    this.value = undefined
+    if (!this.defaultValue) {
+      this._revertButton.disabled = true
+    }
+  }
+
+  /* =======================================================================
+     =================== Lifecycle of Custom Elements ======================
+     ======================================================================= */
+
   connectedCallback () {
     this._defaultValue = this.value
   }
@@ -222,10 +290,10 @@ class SelectImageElement extends HTMLElement {
       case 'disabled':
         if (newVal === '' || newVal === 'disabled') {
           this._selectButton.disabled = true
-          this._clearButton.disabled = true
+          this._revertButton.disabled = true
         } else {
           this._selectButton.removeAttribute('disabled')
-          this._clearButton.removeAttribute('disabled')
+          this._revertButton.removeAttribute('disabled')
         }
         break
       case 'selectlabel':
@@ -237,9 +305,9 @@ class SelectImageElement extends HTMLElement {
         break
       case 'clearlabel':
         if (!newVal) {
-          this._clearButton.innerText = DEFAULT_SELECT_IMAGE_LABEL
+          this._revertButton.innerText = DEFAULT_SELECT_IMAGE_LABEL
         } else {
-          this._clearButton.innerText = newVal
+          this._revertButton.innerText = newVal
         }
         break
     }
@@ -252,40 +320,6 @@ class SelectImageElement extends HTMLElement {
  * @property {string} detail.value - The new value of the SelectImage-Element.
  */
 
-/** Select an image from the lokal systems storage.
- *
- * @private
- * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement - The element to select a image for.
- * @returns {undefined}
- * @fires module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
- */
-function selectImage (selectImageElement) {
-  const fileInput = document.createElement('input')
-  fileInput.setAttribute('type', 'file')
-  fileInput.setAttribute('accept', 'image/*')
-  fileInput.addEventListener('change', function (event) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader()
-      reader.onload = function (event) {
-        selectImageElement.value = event.target.result
-      }
-      reader.readAsDataURL(event.target.files[0])
-    }
-  })
-  fileInput.click()
-}
-
-/** Remove the selected image and reset to the inital image if one is available.
- * The inital value is accessable with the defaultValue property.
- * @private
- * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement - The element to reset.
- * @returns {undefined}
- * @fires module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
- */
-function removeImage (selectImageElement) {
-  selectImageElement.value = selectImageElement.defaultValue
-}
-
 /** Inits a SelectImage element. Primarily it adds event listener to the
  * elements in the shadow DOM.
  * @private
@@ -295,13 +329,13 @@ function removeImage (selectImageElement) {
  */
 function initSelectImageElement (selectImageElement) {
   const selectButton = selectImageElement._selectButton
-  const clearButton = selectImageElement._clearButton
+  const clearButton = selectImageElement._revertButton
 
   selectButton.addEventListener('click', (event) => {
     event.stopPropagation()
     event.preventDefault()
 
-    selectImage(selectImageElement)
+    selectImageElement.select()
     clearButton.disabled = false
   })
 
@@ -309,8 +343,7 @@ function initSelectImageElement (selectImageElement) {
     event.stopPropagation()
     event.preventDefault()
 
-    removeImage(selectImageElement)
-    event.target.disabled = true
+    selectImageElement.revert()
   })
 }
 
