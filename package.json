@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint",
     "lint": "./node_modules/.bin/eslint **/src/*.js",
-    "doc": "jsdoc -p -r select-image/src/select-image.js -R ./README.md"
+    "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/sebastiansIT/SHSWebComponents/issues"
   },
-  "homepage": "https://github.com/sebastiansIT/SHSWebComponents#readme",
+  "homepage": "https://sebastiansit.github.io/SITWebComponents/",
   "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-config-standard": "^14.1.0",
