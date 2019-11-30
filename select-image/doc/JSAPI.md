@@ -21,7 +21,14 @@ and of [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) and
 </dl>
 
 ## Methods
-This class contains no own public methods.
+<dl>
+  <dt><code>SelectImageElement.clear</code></dt>
+  <dd><p>Removes the image and set the value to undefined.</p></dd>
+  <dt><code>SelectImageElement.revert</code></dt>
+  <dd><p>Revert the selected image and revert to the default image.</p></dd>
+  <dt><code>SelectImageElement.select</code></dt>
+  <dd><p>Opens a file selection dialog to select a new image.</p>
+  <p>This function can only be called in reaction to a user triggerd event.</p></dd>
 
 ## Events
 Listen to these events using addEventListener().
