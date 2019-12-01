@@ -285,6 +285,43 @@
             a select-image element with the part() pseudo class.</p></figcaption>
         </figure>
       </section>
+      <section id="demo7_section">
+        <header>
+           <h3>JS API</h3>
+         </header>
+         <style>
+          #demo7 {
+            border: solid 1px darkgrey;
+            background-color: lightgrey;
+            min-height: 4em;
+          }
+         </style>
+         <figure>
+           <sit-select-image id="demo7"
+           value="https://mir-s3-cdn-cf.behance.net/project_modules/fs/d19ed550000683.58c4664249231.jpg"
+            alt="Ancient Civilizations: Lost & Found part 2">
+          </sit-select-image>
+          <figcaption><p><a href="https://www.behance.net/gallery/50000683/Ancient-Civilizations-Lost-Found-part-2">"Ancient Civilizations: Lost & Found part 2"</a>
+            by <span>Alex Feliksovich</span> is licensed under
+            <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en_US">CC BY-NC-ND 4.0</a></p>
+          </figcaption>
+        </figure>
+        <footer>
+          <button id="demo7_revert" type="button" aria-controls="demo7">revert()</button>
+          <button id="demo7_clear" type="button" aria-controls="demo7">clear()</button>
+          <button id="demo7_select" type="button" aria-controls="demo7">select()</button>
+        </footer>
+        <script>
+          document.getElementById('demo7_revert').addEventListener('click', (event) => {
+            document.getElementById(event.target.getAttribute('aria-controls')).revert()
+          })
+          document.getElementById('demo7_clear').addEventListener('click', (event) => {
+            document.getElementById(event.target.getAttribute('aria-controls')).clear()
+          })
+          document.getElementById('demo7_select').addEventListener('click', (event) => {
+            document.getElementById(event.target.getAttribute('aria-controls')).select()
+          })
+        </script>
     </main>
   </body>
 </html>
