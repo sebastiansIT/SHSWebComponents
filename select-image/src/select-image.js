@@ -53,14 +53,13 @@
 const DEFAULT_SELECT_IMAGE_LABEL = 'Select'
 
 /**
-   The default label for the button to reset the image to its inital value.
+ * The default label for the button to reset the image to its inital value.
  * @constant {string}
  */
 const DEFAULT_CLEAR_IMAGE_LABEL = 'Reset'
 
 /** Template for the shadow DOM of the custom element SelectImage
  * (alias sit-select-image).
-
  * @constant {external:HTMLTemplateElement}
  */
 const TEMPLATE = document.createElement('template')
