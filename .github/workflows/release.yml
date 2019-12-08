@@ -26,3 +26,7 @@ jobs:
             - ?
           draft: false
           prerelease: false
+      - name: Create output folder
+        run: mkdir select-image/out
+      - name: Minify JS
+        run: npm run minify
