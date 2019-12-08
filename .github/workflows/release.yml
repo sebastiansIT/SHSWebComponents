@@ -33,10 +33,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Create output folder
-        run: mkdir select-image/out
-      - name: Minify JS
-        run: npm run minify
+      - name: Build
+        run: | 
+           mkdir select-image/out
+           npm run minify
       - name: Upload Release Asset JS
         id: upload-release-asset-js
         uses: actions/upload-release-asset@v1.0.1
@@ -53,6 +53,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          name: select-image.min.js.map
+          label: Source-Map for select-image.min.js
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
           asset_path: ./select-image/out
           asset_name: select-image.min.js.map
