@@ -36,6 +36,7 @@ jobs:
       - name: Build
         run: | 
            mkdir select-image/out
+           npm ci
            npm run minify
       - name: Upload Release Asset JS
         id: upload-release-asset-js
