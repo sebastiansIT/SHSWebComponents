@@ -13,6 +13,8 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+    env: 
+      NPM_FILE_NAME: ""
     steps:
       - name: Checkout code
         uses: actions/checkout@master
@@ -60,3 +62,17 @@ jobs:
           asset_path: ./select-image/out/select-image.min.js.map
           asset_name: select-image.min.js.map
           asset_content_type: application/octet-stream
+      - name: NPM-Pakage creation
+        run: NPM_FILE_NAME=$(npm pack)
+      - name: Upload Release Asset NPM-Paket
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: ${{ NPM_FILE_NAME }}
+          label: NPM-Pakage
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: .
+          asset_name: ${{ NPM_FILE_NAME }}
+          asset_content_type: application/gzip 
+        
