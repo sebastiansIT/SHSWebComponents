@@ -8,7 +8,15 @@
 At the moment there is only one WebComponent named [select-image](select-image/README.md).
 
 ## Installation
+
+### NPM
 In the actual pre release phase there is no public NPM package you can install. This will come later.
+
+### Manual
+Download the components you want from one of the available [releases](https://github.com/sebastiansIT/SITWebComponents/releases). Afterwards you only need to
+add a script tag inside your HTML to allow usage of the component:
+
+    <script src="select-image.min.js" async></script>
 
 ## License
 The Software itself is published under a [GNU LESSER GENERAL PUBLIC LICENSE](./LICENSE).
