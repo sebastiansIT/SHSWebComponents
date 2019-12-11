@@ -2,16 +2,10 @@
   "name": "@sebastiansit/webcomponents",
   "version": "1.0.0",
   "description": "SebastiansIT WebComponents Collection",
-  "browser": "index.js",
-  "scripts": {
-    "lint": "./node_modules/.bin/eslint **/src/*.js",
-    "minify": "terser select-image/src/select-image.js --compress --output select-image/out/select-image.min.js --source-map \"url='select-image.min.js.map'\" --comments --timings --verbose",
-    "test": "npm run lint",
-    "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js"
-  },
+  "browser": "select-image/src/select-image.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sebastiansIT/SHSWebComponents.git"
+    "url": "git+https://github.com/sebastiansIT/SITWebComponents.git"
   },
   "keywords": [
     "web",
@@ -24,7 +18,7 @@
   },
   "license": "LGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/sebastiansIT/SHSWebComponents/issues"
+    "url": "https://github.com/sebastiansIT/SITWebComponents/issues"
   },
   "homepage": "https://sebastiansit.github.io/SITWebComponents/",
   "devDependencies": {
@@ -38,5 +32,11 @@
     "jsdoc": "^3.6.3",
     "terser": "^4.4.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint **/src/*.js",
+    "minify": "terser select-image/src/select-image.js --compress --output select-image/out/select-image.min.js --source-map \"url='select-image.min.js.map'\" --comments --timings --verbose",
+    "test": "npm run lint",
+    "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js"
+  }
 }
