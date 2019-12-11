@@ -21,6 +21,9 @@
     "url": "https://github.com/sebastiansIT/SITWebComponents/issues"
   },
   "homepage": "https://sebastiansit.github.io/SITWebComponents/",
+  "files": [
+    "*/src"
+  ],
   "devDependencies": {
     "eslint": "^6.7.2",
     "eslint-config-standard": "^14.1.0",
