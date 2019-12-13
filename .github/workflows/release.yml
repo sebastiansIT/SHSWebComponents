@@ -40,7 +40,7 @@ jobs:
            npm run minify
       - name: Upload release asset - JS
         id: upload-release-asset-js
-        uses: actionsupload-release-asset@v1.0.1
+        uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
