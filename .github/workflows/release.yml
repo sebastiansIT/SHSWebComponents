@@ -64,6 +64,7 @@ jobs:
         run: | 
           NPM_FILE_NAME=$(npm pack)
           mv $NPM_FILE_NAME npm-package.tgz
+          ls *.tgz
       - name: Upload release asset - NPM-Packet
         uses: actions/upload-release-asset@v1.0.1
         env:
@@ -72,7 +73,6 @@ jobs:
           name: npm-package.tgz
           label: NPM-Package
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: .
+          asset_path: ./npm-package.tgz
           asset_name: npm-package.tgz
           asset_content_type: application/gzip 
-        
