@@ -3,7 +3,7 @@
 
 # SITWebComponents
 [Dokumentation](https://sebastiansit.github.io/SITWebComponents/) |
-[NPM-Packages](https://github.com/sebastiansIT/SITWebComponents/packages/80729)
+[NPM-Package](https://github.com/sebastiansIT/SITWebComponents/packages/80729)
 
 [My](https://github.com/sebastiansit) personal collection of Web Components.
 
