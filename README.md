@@ -2,7 +2,12 @@
   src="https://github.com/sebastiansIT/SITWebComponents/raw/master/logo_340.png" width="128" height="128" style="float:left; border-radius:2em; margin-right:1em;" />
 
 # SITWebComponents
-[My](https://github.com/sebastiansit) personal collection of Web Components
+[Dokumentation](https://sebastiansit.github.io/SITWebComponents/) |
+[NPM-Packages](https://github.com/sebastiansIT/SITWebComponents/packages/80729)
+
+[My](https://github.com/sebastiansit) personal collection of Web Components.
+
+<span style="clear:both"></span>
 
 ## Components
 At the moment there is only one WebComponent named [select-image](select-image/README.md).
@@ -10,13 +15,29 @@ At the moment there is only one WebComponent named [select-image](select-image/R
 ## Installation
 
 ### NPM
-In the actual pre release phase there is no public NPM package you can install. This will come later.
+Install the components with NPM from [GitHub Packages](https://github.com/sebastiansIT/SITWebComponents/packages/80729):
+
+```
+$ npm install @sebastiansit/webcomponents
+```
 
 ### Manual
-Download the components you want from one of the available [releases](https://github.com/sebastiansIT/SITWebComponents/releases). Afterwards you only need to
-add a script tag inside your HTML to allow usage of the component:
+Download the components you want from one of the available [releases](https://github.com/sebastiansIT/SITWebComponents/releases).
 
-    <script src="select-image.min.js" async></script>
+## Usage
+You only need to add a script tag inside your HTML to allow usage of the
+component:
+
+### NPM
+
+```
+<script src="node_modules/@sebastiansit/webcomponents/select-image/src/select-image.js" async></script>
+```
+
+### Manual
+```
+<script src="select-image.min.js" async></script>
+```
 
 ## License
 The Software itself is published under a [GNU LESSER GENERAL PUBLIC LICENSE](./LICENSE).
