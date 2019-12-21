@@ -1,6 +1,6 @@
 {
   "name": "@sebastiansit/webcomponents",
-  "version": "0.1.10",
+  "version": "0.1.12",
   "description": "SebastiansIT WebComponents Collection",
   "browser": "select-image/src/select-image.js",
   "repository": {
