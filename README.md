@@ -1,8 +1,9 @@
 <img alt="Logo &quot;Web Components&quot; with text &quot;SebastiansIT Collection of Web Components&quot;."
-  src="https://github.com/sebastiansIT/SITWebComponents/raw/master/logo_340.png" width="128" height="128" style="float:left; border-radius:2em; margin-right:1em;" />
+  src="https://github.com/sebastiansIT/SITWebComponents/raw/master/logo_340.png" width="128" height="128" style="float:left; border-radius:2em; margin-right:1em;padding:0.2em; background-color:white;" />
 
 # SITWebComponents
 [Dokumentation](https://sebastiansit.github.io/SITWebComponents/) |
+[Source](https://github.com/sebastiansIT/SITWebComponents) | 
 [NPM-Package](https://github.com/sebastiansIT/SITWebComponents/packages/80729)
 
 [My](https://github.com/sebastiansit) personal collection of Web Components.
