@@ -34,11 +34,15 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "jsdoc": "^3.6.3",
+    "stylelint": "^13.0.0",
+    "stylelint-config-standard": "^19.0.0",
     "terser": "^4.4.3"
   },
   "dependencies": {},
   "scripts": {
-    "lint": "./node_modules/.bin/eslint **/src/*.js",
+    "lint:js": "npx eslint **/src/*.js",
+    "lint:css": "npx stylelint --syntax html **/src/*.js",
+    "lint": "npm run lint:js && npm run lint:css",
     "minify": "terser select-image/src/select-image.js --compress --output select-image/out/select-image.min.js --source-map \"url='select-image.min.js.map'\" --comments --timings --verbose",
     "test": "npm run lint",
     "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js"

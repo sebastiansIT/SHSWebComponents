@@ -18,6 +18,8 @@
  * along with SITWebComponents. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* global HTMLElement, CustomEvent, FileReader */
+
 /** The base for all HTML elements.
  * @external HTMLElement
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement|MDN web docs}
@@ -82,11 +84,12 @@ TEMPLATE.innerHTML = `
       height: inherit;
       max-height: inherit;
     }
+
     img[src] {
       display: inline;
     }
 
-    @supports(background:revert) {
+    @supports (background:revert) {
       button {
         width: var(--sit-button-width, revert);
         background: var(--sit-button-background, revert);
@@ -96,17 +99,20 @@ TEMPLATE.innerHTML = `
         padding: var(--sit-button-padding, revert);
         font: var(--sit-button-font, revert);
       }
-      button:hover:not([disabled]) {
-        border: var(--sit-button-hover-border, revert);
-        text-decoration: var(--sit-button-hover-decoration, revert);
-      }
+
       button:focus {
         border: var(--sit-button-focus-border, revert);
         text-decoration: var(--sit-button-focus-decoration, revert);
       }
+
       button:active {
         background: var(--sit-button-active-background, revert);
         border: var(--sit-button-active-border, revert);
+      }
+
+      button:hover:not([disabled]) {
+        border: var(--sit-button-hover-border, revert);
+        text-decoration: var(--sit-button-hover-decoration, revert);
       }
     }
 
