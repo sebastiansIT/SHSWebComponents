@@ -45,6 +45,7 @@
     "lint:css": "npx stylelint --syntax html **/src/*.js",
     "lint": "npm run lint:js && npm run lint:css",
     "minify": "terser select-image/src/select-image.js --compress --output select-image/out/select-image.min.js --source-map \"url='select-image.min.js.map'\" --comments --timings --verbose",
+    "test:visual": "npx backstop --config .backstoprc.js test",
     "test": "npm run lint",
     "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js"
   }
