@@ -1,4 +1,4 @@
-/** @license
+/** @license LGPL-3.0-or-later
  * Copyright 2019 Sebastian Spautz
  *
  * This File is Part of "SITWebComponents"
@@ -323,6 +323,7 @@ class SelectImageElement extends HTMLElement {
 /** Event fired when the value of the SelectImage element is changed.
  * @event module:sebastiansit/webcomponents/selectimage~SelectImageElement#change
  * @type {external:CustomEvent}
+ * @property {object} detail - The detail information about the event.
  * @property {string} detail.value - The new value of the SelectImage-Element.
  */
 
