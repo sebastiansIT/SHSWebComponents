@@ -13,7 +13,6 @@ You can see some examples as part of the [demo page](./demo.html).
 1. [ShadowDOM](./doc/ShadowDOM.md)
 
 ## Prerequisite
-
 To use this element the user agent must have support for&hellip;
 
 - [ECMAScript 2015 const Keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)

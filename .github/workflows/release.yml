@@ -26,3 +26,56 @@ jobs:
             - ?
           draft: false
           prerelease: false
+      - name: Use Node.js '12.x'
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@sebastiansit'
+      - name: Build
+        run: |
+           mkdir select-image/out
+           npm ci
+           npm run minify
+      - name: Upload release asset - JS
+        id: upload-release-asset-js
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ./select-image/out/select-image.min.js
+          asset_name: select-image.min.js
+          asset_content_type: application/javascript
+      - name: Upload release asset - Sourcemap
+        id: upload-release-asset-map
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: select-image.min.js.map
+          label: Source-Map for select-image.min.js
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ./select-image/out/select-image.min.js.map
+          asset_name: select-image.min.js.map
+          asset_content_type: application/octet-stream
+      - name: NPM-Package creation
+        run: |
+          NPM_FILE_NAME=$(npm pack)
+          mv $NPM_FILE_NAME npm-package.tgz
+          ls *.tgz
+      - name: Upload release asset - NPM-Packet
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: npm-package.tgz
+          label: NPM-Package
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ./npm-package.tgz
+          asset_name: npm-package.tgz
+          asset_content_type: application/gzip
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
