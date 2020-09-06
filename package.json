@@ -27,6 +27,7 @@
   "browserslist": "default",
   "devDependencies": {
     "backstopjs": "^5.0.4",
+    "concurrently": "^5.3.0",
     "eslint": "^7.8.1",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
@@ -34,6 +35,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "http-server": "^0.12.3",
     "jsdoc": "^3.6.5",
     "stylelint": "^13.7.0",
     "stylelint-config-standard": "^20.0.0",
@@ -44,9 +46,11 @@
     "lint:js": "npx eslint **/src/*.js",
     "lint:css": "npx stylelint --syntax html **/src/*.js",
     "lint": "npm run lint:js && npm run lint:css",
+    "test:visual": "concurrently --success=first --kill-others \"npx http-server -p 3000 -c-1\" \"npx backstop --config .backstoprc.js test\"",
+    "test": "npm run lint && npm run test:visual",
+    "report:visual": "npx backstop --config .backstoprc.js openReport",
+    "report": "npm run report:visual",
     "minify": "terser select-image/src/select-image.js --compress --output select-image/out/select-image.min.js --source-map \"url='select-image.min.js.map'\" --comments --timings --verbose",
-    "test:visual": "npx backstop --config .backstoprc.js test",
-    "test": "npm run lint",
     "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js"
   }
 }
