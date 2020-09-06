@@ -188,7 +188,7 @@
            --sit-button-active-border: #006400 inset 0.2rem;
          }
          </style>
-         <p>The feature I used for this demo isn't available in all browsers jet.
+         <p>The feature I used for this demo isn't available in all browsers yet.
            At the moment (2019-11-01) Firefox supports it.</p>
          <figure>
            <sit-select-image id="demo5"
@@ -227,8 +227,14 @@
            <h3>Image-Select-Element with styled buttons (::parts)</h3>
          </header>
          <style>
-         #demo6::part(sit-select-image-select-button) {
+         #demo6::part(sit-select-image-select-button),
+         #demo6::part(sit-select-image-reset-button) {
+           font: 1em monospace;
            background: linear-gradient(180deg, white 0%, white 40%, orange 100%);
+           margin: 0.2rem;
+           border: orange outset 0.2rem;
+           border-radius: 0.5rem;
+           padding: 0.4rem;
          }
 
          #demo6::part(sit-select-image-select-button):hover,
@@ -256,8 +262,9 @@
            border-style: inset;
          }
          </style>
-         <p>The feature I used for this demo isn't available in all browsers jet.
-           AT the moment (2019-11-01) chromium based browsers like Vivaldi supports it.
+         <p>The feature I used for this demo isn't available in all browsers yet.
+           At the moment (2020-09-06) chromium based browsers like Vivaldi supports it.
+           Also Firefox supports it since version 72.
            See <a href="https://caniuse.com/#feat=mdn-css_selectors_part">caniuse.com</a>
            for more details.</p>
          <figure>
