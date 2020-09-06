@@ -47,7 +47,7 @@
  */
 
 /** Contains a WebComponent that acts as a form element to select images.
- * @module sebastiansit/webcomponents/selectimage
+ * @module SelectImage
  */
 
 /** The default label for the button to select a image from the computers storage.
