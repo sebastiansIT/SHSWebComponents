@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!--  Copyright 2019 Sebastian Spautz
+<!--  Copyright 2019, 2020 Sebastian Spautz
 
     This File is Part of "SITWebComponents"
     <https://github.com/sebastiansIT/SITWebComponents>.
@@ -165,60 +165,6 @@
             by <span>Alex Feliksovich</span> is licensed under
             <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=ccsearch&atype=html">CC BY-NC-ND 4.0</a></p>
           </figcaption>
-        </figure>
-      </section>
-
-      <section id="demo5_section">
-        <header>
-           <h3>Image-Select-Element with styled buttons (custom properties)</h3>
-         </header>
-         <style>
-         #demo5_section {
-           --sit-button-font: 1em monospace;
-           --sit-button-hover-decoration: underline;
-           --sit-button-background: linear-gradient(180deg, white 0%, white 40%, #006400 100%);
-           --sit-button-margin: 0.2rem;
-           --sit-button-border: #006400 outset 0.2rem;
-           --sit-button-radius: 0.5rem;
-           --sit-button-padding: 0.4rem;
-
-           --sit-button-focus-decoration: var(--sit-button-hover-decoration);
-
-           --sit-button-active-background: linear-gradient(180deg, #006400 0%, white 40%, white 100%);
-           --sit-button-active-border: #006400 inset 0.2rem;
-         }
-         </style>
-         <p>The feature I used for this demo isn't available in all browsers yet.
-           At the moment (2019-11-01) Firefox supports it.</p>
-         <figure>
-           <sit-select-image id="demo5"
-            value="https://mir-s3-cdn-cf.behance.net/project_modules/fs/03e65a29094307.55e1d4c182fc3.jpg"
-            alt="Valley of swords">
-          </sit-select-image>
-          <figcaption><p><a href="https://www.behance.net/gallery/29094307/Valley-of-swords">"Valley of swords"</a>
-            by <span>Alex Feliksovich</span> is licensed under
-            <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=ccsearch&atype=html">CC BY-NC 4.0</a></p>
-          </figcaption>
-        </figure>
-        <figure class="code">
-         <pre><code>&lt;style&gt;
-:root {
-   --sit-button-font: 1em monospace;
-   --sit-button-hover-decoration: underline;
-   --sit-button-background: linear-gradient(180deg, white 0%, white 40%, #006400 100%);
-   --sit-button-margin: 0.2rem;
-   --sit-button-border: #006400 outset 0.2rem;
-   --sit-button-radius: 0.5rem;
-   --sit-button-padding: 0.4rem;
-
-   --sit-button-focus-decoration: var(--sit-button-hover-decoration);
-
-   --sit-button-active-background: linear-gradient(180deg, #006400 0%, white 40%, white 100%);
-   --sit-button-active-border: #006400 inset 0.2rem;
-}
-&lt;/style&gt;</code></pre>
-          <figcaption><p>Code example for a styling of the internal buttons of
-            a select-image element.</p></figcaption>
         </figure>
       </section>
 

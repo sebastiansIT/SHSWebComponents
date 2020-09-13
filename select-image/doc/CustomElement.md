@@ -37,11 +37,11 @@ to a data URL representing the selected image.</p></dd>
 </dl>
 
 ## Styling width CSS
-You can stlye this element as normal with CSS. Per default the element is a
-inline flex container that shows it's flex items verticaly and horizontaly
+You can design this element as usual with CSS. By default the element is a
+inline flex container which shows it's flex items vertically and horizontally
 centered.
 
-In addition it has a value of relative for the property position.
+In addition it has a value of "relative" for the property position.
 
 The shadow DOM can styled in a limited way. Concrete information are on the
 page [Shadow DOM](./ShadowDOM.md).

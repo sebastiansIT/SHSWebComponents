@@ -15,60 +15,9 @@ an span element with the class **imagecontrols**.
     </span>
 
 ## Styling
-To style the shadow DOM I support two technics.
-
-### Custom properties
-
-Custom properties can pierce the shadow DOM boundaries. But there is a problem:
-If you set a custom property as a value to a regular propery and the custom
-property isn't set, the regualar property would be **unset**. In such a case the default
-style is broken. To solve this the keyword **revert** is used. But **revert**
-isn't supported in the most browsers (only Firefox at the moment).
-
-The following CSS custom properties are declared:
-
-<dl>
-  <dt>--sit-button-width</dt>
-  <dd><p>The width of the buttons inside the custom element.</p></dd>
-
-  <dt>--sit-button-background</dt>
-  <dd><p>The background of the buttons inside the custom element.</p></dd>
-
-  <dt>--sit-button-margin</dt>
-  <dd><p>The margin of the buttons inside the custom element.</p></dd>
-
-  <dt>--sit-button-border</dt>
-  <dd><p>The border of the buttons inside the custom element.</p></dd>
-
-  <dt>--sit-button-radius</dt>
-  <dd><p>The border-radius of the buttons inside the custom element.</p></dd>
-
-  <dt>--sit-button-padding</dt>
-  <dd><p>The padding of the buttons inside the custom element.</p></dd>
-
-  <dt>--sit-button-font</dt>
-  <dd><p>the font of the buttons inside the custom element.</p></dd>
-
-  <dt>--sit-button-hover-border</dt>
-  <dd><p>The border of the buttons when they are hovered.</p></dd>
-
-  <dt>--sit-button-hover-decoration</dt>
-  <dd><p>The text-decoration of the buttons when they are hovered.</p></dd>
-
-  <dt>--sit-button-focus-border</dt>
-  <dd><p>The border of the buttons when they are focused.</p></dd>
-
-  <dt>--sit-button-focus-decoration</dt>
-  <dd><p>The text-decoration of the buttons when tey are focused.</p></dd>
-
-  <dt>--sit-button-active-background</dt>
-  <dd><p>The background of the buttons when they are active.</p></dd>
-
-  <dt>--sit-button-active-border</dt>
-  <dd><p>The border of the buttons when they are active.</p></dd>
-</dl>
-
-There is an example for this on the [demo page](../demo.html#demo5_section).
+The pseudo element *::part()* can be used to design the shadow DOM.
+Since version 1.1 the alternative styling with custom properties isn't longer 
+supported.
 
 ### Parts
 

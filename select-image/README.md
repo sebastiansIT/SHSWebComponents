@@ -28,7 +28,6 @@ can be simulated with polyfills. But this is a Job for you.
 
 To style the shadow DOM support for addidional features is needed:
 
-- [CSS Cascading and Inheritance Level 4 revert keyword](https://developer.mozilla.org/en-US/docs/Web/CSS/revert#Specifications)
 - [CSS Shadow Parts](https://developer.mozilla.org/en-US/docs/Web/CSS/::part)
 
 For more information about styling see my [documentation](./doc/ShadowDOM.md).
