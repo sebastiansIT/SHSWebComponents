@@ -47,7 +47,7 @@
     "lint:js": "npx eslint **/src/*.js",
     "lint:css": "npx stylelint --syntax html **/src/*.js",
     "lint": "npm run lint:js && npm run lint:css",
-    "test:visual": "concurrently --success=first --kill-others \"npx http-server -p 3001 -c-1\" \"npx backstop --config .backstoprc.js --filter Change test\"",
+    "test:visual": "concurrently --success=first --kill-others \"npx http-server -p 3001 -c-1\" \"npx backstop --config .backstoprc.js test\"",
     "test": "npm run lint && npm run test:visual",
     "report:visual": "npx backstop --config .backstoprc.js openReport",
     "report": "npm run report:visual",
