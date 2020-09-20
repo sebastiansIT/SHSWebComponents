@@ -12,8 +12,8 @@ module.exports = {
       'height': 768
     }*/
   ],
-  'onBeforeScript': 'puppet/onBefore.js',
-  'onReadyScript': 'puppet/onReady.js',
+  //'onBeforeScript': 'puppet/onBefore.js',
+  //'onReadyScript': 'puppet/onReady.js',
   'scenarios': [
     {
       'label': 'Select-Image: Simple Usage Demo',
@@ -45,12 +45,6 @@ module.exports = {
       'url': 'http://localhost:3001/select-image/demo.html',
       'referenceUrl': 'https://sebastiansit.github.io/SITWebComponents/select-image/demo.html',
       'selectors': ['#demo4']
-    },
-    {
-      'label': 'Select-Image: Custom Property Styling',
-      'url': 'http://localhost:3001/select-image/demo.html',
-      'referenceUrl': 'https://sebastiansit.github.io/SITWebComponents/select-image/demo.html',
-      'selectors': ['#demo5']
     },
     {
       'label': 'Select-Image: Pseudo Element Styling',
