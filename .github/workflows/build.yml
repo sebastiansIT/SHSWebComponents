@@ -25,7 +25,7 @@ jobs:
       env:
         CI: true
     - name: Archive report from Backstop.js
-        uses: actions/upload-artifact@v2
-        with:
-          name: backstop.js JUnit Report
-          path: backstop_data/ci_report/xunit.xml
+      uses: actions/upload-artifact@v2
+      with:
+        name: backstop.js JUnit Report
+        path: backstop_data/ci_report/xunit.xml
