@@ -31,8 +31,13 @@ jobs:
     - name: Archive report from Backstop.js
       uses: actions/upload-artifact@v2
       with:
-        name: backstopjs.xunit.xml
-        path: report/**.xml
+        name: reports
+        path: report/backstopjs/ci_report/xunit.xml
+    - name: Archive report from ESLint
+      uses: actions/upload-artifact@v2
+      with:
+        name: reports
+        path: report/eslint.xml
     - name: Check Result
       if: steps.npm.outcome == 'failure'
       run: exit 1
