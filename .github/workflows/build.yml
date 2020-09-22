@@ -28,16 +28,14 @@ jobs:
       continue-on-error: true
       env:
         CI: true
-    - name: Archive report from Backstop.js
+    - name: Archive reports
       uses: actions/upload-artifact@v2
       with:
         name: reports
-        path: report/backstopjs/ci_report/xunit.xml
-    - name: Archive report from ESLint
-      uses: actions/upload-artifact@v2
-      with:
-        name: reports
-        path: report/eslint.xml
+        if-no-files-found: 'ignore'
+        path: |
+          report/backstopjs/ci_report/xunit.xml
+          report/eslint.xml
     - name: Check Result
       if: steps.npm.outcome == 'failure'
       run: exit 1
