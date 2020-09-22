@@ -30,7 +30,7 @@ jobs:
         CI: true
     - name: Archive reports
       uses: actions/upload-artifact@v2
-      if: failure()
+      if: steps.npm.outcome == 'failure'
       with:
         name: reports
         if-no-files-found: 'ignore'
