@@ -32,10 +32,12 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: reports
+        if: failure()
         if-no-files-found: 'ignore'
         path: |
           report/backstopjs/ci_report/xunit.xml
           report/eslint.xml
+          report/stylelint.txt
     - name: Check Result
       if: steps.npm.outcome == 'failure'
       run: exit 1
