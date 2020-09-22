@@ -44,8 +44,8 @@
   "dependencies": {},
   "scripts": {
     "backstop:reference": "npx backstop --config .backstoprc.js reference",
-    "lint:js": "npx eslint **/src/*.js",
-    "lint:css": "npx stylelint --syntax html **/src/*.js",
+    "lint:js": "npx eslint --output-file report/eslint.xml --format checkstyle **/src/*.js",
+    "lint:css": "npx stylelint --syntax html --output-file report/stylelint.txt **/src/*.js",
     "lint": "npm run lint:js && npm run lint:css",
     "test:visual": "concurrently --success=first --kill-others \"npx http-server -p 3001 -c-1\" \"npx backstop --config .backstoprc.js test\"",
     "test": "npm run lint && npm run test:visual",

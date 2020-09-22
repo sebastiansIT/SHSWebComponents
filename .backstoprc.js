@@ -12,8 +12,6 @@ module.exports = {
       'height': 768
     }*/
   ],
-  //'onBeforeScript': 'puppet/onBefore.js',
-  //'onReadyScript': 'puppet/onReady.js',
   'scenarios': [
     {
       'label': 'Select-Image: Simple Usage Demo',
@@ -59,11 +57,11 @@ module.exports = {
     }
   ],
   'paths': {
-    'bitmaps_reference': 'backstop_data/bitmaps_reference',
-    'bitmaps_test': 'backstop_data/bitmaps_test',
-    'engine_scripts': 'backstop_data/engine_scripts',
-    'html_report': 'backstop_data/html_report',
-    'ci_report': 'backstop_data/ci_report'
+    'bitmaps_reference': 'test/backstopjs/bitmaps_reference',
+    'bitmaps_test': 'report/backstopjs/bitmaps_test',
+    'engine_scripts': 'test/backstopjs/engine_scripts',
+    'html_report': 'report/backstopjs/html_report',
+    'ci_report': 'report/backstopjs/ci_report'
   },
   'report': ['CI'],
   'engine': 'puppeteer',

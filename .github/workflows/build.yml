@@ -32,8 +32,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: backstopjs.xunit.xml
-        path: backstop_data/ci_report/xunit.xml
+        path: report/**.xml
     - name: Check Result
       if: steps.npm.outcome == 'failure'
       run: exit 1
-      
