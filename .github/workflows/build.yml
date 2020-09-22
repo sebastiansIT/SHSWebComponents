@@ -30,9 +30,9 @@ jobs:
         CI: true
     - name: Archive reports
       uses: actions/upload-artifact@v2
+      if: failure()
       with:
         name: reports
-        if: failure()
         if-no-files-found: 'ignore'
         path: |
           report/backstopjs/ci_report/xunit.xml
