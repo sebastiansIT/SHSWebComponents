@@ -28,12 +28,6 @@ jobs:
       continue-on-error: true
       env:
         CI: true
-    - uses: ashley-taylor/junit-report-annotations-action@1.3
-      if: always()
-      with:
-        access-token: ${{ secrets.GITHUB_TOKEN }}
-        path: '**/xunit.xml'
-        numFailures: 1
     - name: Archive reports
       uses: actions/upload-artifact@v2
       if: steps.npm.outcome == 'failure'
