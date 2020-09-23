@@ -13,14 +13,31 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+      with:
+        lfs: true
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
+      id: npm
       run: |
         npm ci
         npm run build --if-present
         npm test
+      continue-on-error: true
       env:
         CI: true
+    - name: Archive reports
+      uses: actions/upload-artifact@v2
+      if: steps.npm.outcome == 'failure'
+      with:
+        name: reports
+        if-no-files-found: 'ignore'
+        path: |
+          report/backstopjs/ci_report/xunit.xml
+          report/eslint.xml
+          report/stylelint.txt
+    - name: Check Result
+      if: steps.npm.outcome == 'failure'
+      run: exit 1
