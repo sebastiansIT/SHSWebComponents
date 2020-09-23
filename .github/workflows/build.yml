@@ -32,7 +32,7 @@ jobs:
       if: always()
       with:
         access-token: ${{ secrets.GITHUB_TOKEN }}
-        path: report/backstopjs/ci_report/xunit.xml
+        path: '**/xunit.xml'
         numFailures: 1
     - name: Archive reports
       uses: actions/upload-artifact@v2
