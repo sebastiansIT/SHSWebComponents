@@ -19,6 +19,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: create Backstop Reference
+      run: npm run backstop:reference
     - name: npm install, build, and test
       id: npm
       run: |
@@ -28,8 +30,6 @@ jobs:
       continue-on-error: true
       env:
         CI: true
-    - name: create Backstop Reference
-      run: npm run backstop:reference
     - name: Archive reports
       uses: actions/upload-artifact@v2
       if: steps.npm.outcome == 'failure'
@@ -40,9 +40,6 @@ jobs:
           report/backstopjs/ci_report/xunit.xml
           report/eslint.xml
           report/stylelint.txt
-          report/backstopjs/html_report
-          report/backstopjs/bitmaps_test
-          test/backstopjs/bitmaps_reference
     - name: Check Result
       if: steps.npm.outcome == 'failure'
       run: exit 1
