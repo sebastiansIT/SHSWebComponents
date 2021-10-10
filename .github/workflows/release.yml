@@ -26,10 +26,10 @@ jobs:
             - ?
           draft: false
           prerelease: false
-      - name: Use Node.js '12.x'
+      - name: Use Node.js '16.x'
         uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@sebastiansit'
       - name: Build
