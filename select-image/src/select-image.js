@@ -1,5 +1,5 @@
 /** @license LGPL-3.0-or-later
- * Copyright 2019, 2020 Sebastian Spautz
+ * Copyright 2019, 2020 Sebastian Spautz.
  *
  * This File is Part of "SITWebComponents"
  * <https://github.com/sebastiansIT/SHSWebComponents>.
@@ -255,8 +255,10 @@ class SelectImageElement extends HTMLElement {
       case 'value':
         if (!newVal) {
           this._image.removeAttribute('src')
+          this._revertButton.disabled = true
         } else {
           this._image.src = newVal
+          this._revertButton.disabled = false
         }
         break
       case 'alt':
