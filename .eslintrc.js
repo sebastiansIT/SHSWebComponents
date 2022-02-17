@@ -20,7 +20,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    "jsdoc/check-examples": 1,
+    //"jsdoc/check-examples": 0, // Actualy not supported in ESLint 8
     "jsdoc/check-indentation": 1,
     "jsdoc/check-syntax": 1,
     "jsdoc/check-tag-names": ['error', { definedTags: ['customElement'] }], // Recommended
@@ -28,7 +28,8 @@ module.exports = {
     "jsdoc/require-description": 1,
     "jsdoc/require-description-complete-sentence": 1,
     "jsdoc/require-hyphen-before-param-description": 1,
-    "jsdoc/newline-after-description": 0
+    "jsdoc/newline-after-description": 0,
+    "jsdoc/multiline-blocks": ["error"|"warn", {"noZeroLineText":false}]
   },
   settings: {
     jsdoc: {

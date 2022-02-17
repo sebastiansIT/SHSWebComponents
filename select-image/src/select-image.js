@@ -192,7 +192,7 @@ class SelectImageElement extends HTMLElement {
   /* getter and setter for title attribute are part of HTMLElement */
 
   /* =======================================================================
-     ========================== Public Methods ====??=======================
+     ========================== Public Methods =============================
      ======================================================================= */
 
   /** Select an image from the lokal systems storage.
@@ -207,7 +207,7 @@ class SelectImageElement extends HTMLElement {
     fileInput.setAttribute('accept', 'image/*')
     fileInput.addEventListener('change', function (event) {
       if (event.target.files && event.target.files[0]) {
-        var reader = new FileReader()
+        const reader = new FileReader()
         reader.onload = function (event) {
           this.value = event.target.result
         }.bind(this)
