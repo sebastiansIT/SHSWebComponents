@@ -173,7 +173,7 @@ class SelectImageElement extends HTMLElement {
     // render prozess showing the new Image. The timeout reoder the execution.
     window.setTimeout(() => {
       this.dispatchEvent(
-        new CustomEvent('change', { detail: { value: value } })
+        new CustomEvent('change', { detail: { value } })
       )
     }, 0)
   }
