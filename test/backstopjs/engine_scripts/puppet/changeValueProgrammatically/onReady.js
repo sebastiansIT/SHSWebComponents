@@ -7,5 +7,5 @@ module.exports = async (page, scenario, vp) => {
     // document.getElementById('demo1').revert()
   })
 
-  await page.waitFor(2000)
+  await page.waitForTimeout(2000);
 }
