@@ -1,5 +1,5 @@
 /** @license LGPL-3.0-or-later
- * Copyright 2019, 2020 Sebastian Spautz.
+ * Copyright 2019, 2020, 2023 Sebastian Spautz.
  *
  * This File is Part of "SITWebComponents"
  * <https://github.com/sebastiansIT/SHSWebComponents>.
