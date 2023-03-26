@@ -153,31 +153,40 @@ class SelectImageElement extends HTMLElement {
    */
   #internals
 
+  /** Internal field to store the inital value (an image) of the element.
+   * @see module:sebastiansit/webcomponents/selectimage~SelectImage#defaultValue
+   * @private
+   * @member {string}
+   */
+  #defaultValue = undefined
+
+  #shadowRoot
+
+  #image
+
+  /** Internal field for the button "select" in the shadow DOM.
+   * @private
+   * @member {external:HTMLButtonElement}
+   */
+  #selectButton
+
+  /** Internal field for the button "revert" in the shadow DOM.
+   * @private
+   * @member {external:HTMLButtonElement}
+   */
+  #revertButton
+
   constructor () {
     super()
     this.#internals = this.attachInternals()
 
-    /** Internal field to store the inital value (an image) of the element.
-     * @see module:sebastiansit/webcomponents/selectimage~SelectImage#defaultValue
-     * @private
-     * @member {string}
-     */
-    this._defaultValue = undefined
-    this._shadowRoot = this.attachShadow({ mode: 'open' })
-    this._shadowRoot.appendChild(TEMPLATE.content.cloneNode(true))
-    this._image = this._shadowRoot.querySelector('img')
-    /** Internal field for the button "select" in the shadow DOM.
-     * @private
-     * @member {external:HTMLButtonElement}
-     */
-    this._selectButton = this._shadowRoot.querySelector('#selectImage')
-    /** Internal field for the button "revert" in the shadow DOM.
-     * @private
-     * @member {external:HTMLButtonElement}
-     */
-    this._revertButton = this._shadowRoot.querySelector('#clearImage')
+    this.#shadowRoot = this.attachShadow({ mode: 'open' })
+    this.#shadowRoot.appendChild(TEMPLATE.content.cloneNode(true))
+    this.#image = this.#shadowRoot.querySelector('img')
+    this.#selectButton = this.#shadowRoot.querySelector('#selectImage')
+    this.#revertButton = this.#shadowRoot.querySelector('#clearImage')
 
-    initSelectImageElement(this)
+    this.#initSelectImageElement()
   }
 
   /* =======================================================================
@@ -217,7 +226,7 @@ class SelectImageElement extends HTMLElement {
    * const defaultValue = document.getElementsByTagName('sit-select-image')[0].defaultValue
    */
   get defaultValue () {
-    return this._defaultValue
+    return this.#defaultValue
   }
 
   /* =============== Properties inherit by ElementInternals ================ */
@@ -270,12 +279,37 @@ class SelectImageElement extends HTMLElement {
   #validate () {
     const required = this.hasAttribute('required') && (this.getAttribute('required') === '' || this.getAttribute('required') === 'required')
     if (required) {
-      if (!this._image.src || this._image.src === this._defaultValue) {
+      if (!this.#image.src || this.#image.src === this.#defaultValue) {
         this.#internals.setValidity({ valueMissing: true }, 'You need a Picture') // TODO add a map for i18n
         return
       }
     }
     this.#internals.setValidity({})
+  }
+
+  /** Inits a SelectImage element. Primarily it adds event listener to the
+   * elements in the shadow DOM.
+   * @private
+   * @returns {undefined}
+   */
+  #initSelectImageElement () {
+    const selectButton = this.#selectButton
+    const clearButton = this.#revertButton
+
+    selectButton.addEventListener('click', (event) => {
+      event.stopPropagation()
+      event.preventDefault()
+
+      this.select()
+      clearButton.disabled = false
+    })
+
+    clearButton.addEventListener('click', (event) => {
+      event.stopPropagation()
+      event.preventDefault()
+
+      this.revert()
+    })
   }
 
   /* =======================================================================
@@ -311,7 +345,7 @@ class SelectImageElement extends HTMLElement {
    */
   revert () {
     this.value = this.defaultValue
-    this._revertButton.disabled = true
+    this.#revertButton.disabled = true
   }
 
   /** Remove the actual image. Unlike revert(), the default value is ignored.
@@ -321,7 +355,7 @@ class SelectImageElement extends HTMLElement {
   clear () {
     this.value = undefined
     if (!this.defaultValue) {
-      this._revertButton.disabled = true
+      this.#revertButton.disabled = true
     }
   }
 
@@ -348,7 +382,7 @@ class SelectImageElement extends HTMLElement {
      ======================================================================= */
 
   connectedCallback () {
-    this._defaultValue = this.value
+    this.#defaultValue = this.value
     // DEBUG: console.log(`Associated Form: ${this.#internals.form?.id || this.#internals.form?.name || this.#internals.form?.action}`);
   }
 
@@ -361,35 +395,35 @@ class SelectImageElement extends HTMLElement {
       case 'value':
         if (newVal !== oldVal) {
           if (!newVal) {
-            this._image.removeAttribute('src')
-            this._revertButton.disabled = true
+            this.#image.removeAttribute('src')
+            this.#revertButton.disabled = true
           } else {
-            this._image.src = newVal
-            this._revertButton.disabled = false
+            this.#image.src = newVal
+            this.#revertButton.disabled = false
           }
           // Set the formular element value for form submiting
-          if (this._image.src === this._defaultValue) {
+          if (this.#image.src === this.#defaultValue) {
             this.#internals.setFormValue('')
           } else {
-            this.#internals.setFormValue(this._image.src || '')
+            this.#internals.setFormValue(this.#image.src || '')
           }
         }
         this.#validate()
         break
       case 'alt':
         if (!newVal) {
-          this._image.alt = ''
+          this.#image.alt = ''
         } else {
-          this._image.alt = newVal
+          this.#image.alt = newVal
         }
         break
       case 'disabled':
         if (newVal === '' || newVal === 'disabled') {
-          this._selectButton.disabled = true
-          this._revertButton.disabled = true
+          this.#selectButton.disabled = true
+          this.#revertButton.disabled = true
         } else {
-          this._selectButton.removeAttribute('disabled')
-          this._revertButton.removeAttribute('disabled')
+          this.#selectButton.removeAttribute('disabled')
+          this.#revertButton.removeAttribute('disabled')
         }
         break
       case 'required':
@@ -399,14 +433,14 @@ class SelectImageElement extends HTMLElement {
         if (!newVal) {
           this._selectButton.innerText = DEFAULT_SELECT_IMAGE_LABEL
         } else {
-          this._selectButton.innerText = newVal
+          this.#selectButton.innerText = newVal
         }
         break
       case 'clearlabel':
         if (!newVal) {
           this._revertButton.innerText = DEFAULT_SELECT_IMAGE_LABEL
         } else {
-          this._revertButton.innerText = newVal
+          this.#revertButton.innerText = newVal
         }
         break
     }
@@ -419,33 +453,6 @@ class SelectImageElement extends HTMLElement {
  * @property {object} detail - The detail information about the event.
  * @property {string} detail.value - The new value of the SelectImage-Element.
  */
-
-/** Inits a SelectImage element. Primarily it adds event listener to the
- * elements in the shadow DOM.
- * @private
- * @static
- * @param {module:sebastiansit/webcomponents/selectimage~SelectImage} selectImageElement - The element to init.
- * @returns {undefined}
- */
-function initSelectImageElement (selectImageElement) {
-  const selectButton = selectImageElement._selectButton
-  const clearButton = selectImageElement._revertButton
-
-  selectButton.addEventListener('click', (event) => {
-    event.stopPropagation()
-    event.preventDefault()
-
-    selectImageElement.select()
-    clearButton.disabled = false
-  })
-
-  clearButton.addEventListener('click', (event) => {
-    event.stopPropagation()
-    event.preventDefault()
-
-    selectImageElement.revert()
-  })
-}
 
 /* Register the custom element SelectImage with tag name "sit-select-image". */
 window.customElements.define('sit-select-image', SelectImageElement)
