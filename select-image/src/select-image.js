@@ -31,8 +31,18 @@
  */
 
 /** The button HTML element.
+ * @external HTMLFormElement
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement|MDN web docs}
+ */
+
+/** The button HTML element.
  * @external HTMLButtonElement
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement|MDN web docs}
+ */
+
+/** List of DOM nodes.
+ * @external NodeList
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/NodeList|MDN web docs}
  */
 
 /** Reader for files.
@@ -44,6 +54,11 @@
 /** Interface for custom events.
  * @external CustomEvent
  * @see {@link https://developer.mozilla.org/de/docs/Web/API/CustomEvent|MDN web docs}
+ */
+
+/** Interface for ElementInternals.
+ * @external ElementInternals
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals|MDN web docs}
  */
 
 /** Contains a WebComponent that acts as a form element to select images.
@@ -123,8 +138,24 @@ TEMPLATE.innerHTML = `
  * @augments external:HTMLElement
  */
 class SelectImageElement extends HTMLElement {
+  /** Marks custom element as form item element.
+   * @see  {external:ElementInternals}
+   * @static
+   * @readonly
+   * @type {boolean}
+   */
+  static formAssociated = true
+
+  /** The internals of the custom element.
+   * @readonly
+   * @type {external:ElementInternals}
+   * @private
+   */
+  #internals
+
   constructor () {
     super()
+    this.#internals = this.attachInternals()
 
     /** Internal field to store the inital value (an image) of the element.
      * @see module:sebastiansit/webcomponents/selectimage~SelectImage#defaultValue
@@ -189,7 +220,63 @@ class SelectImageElement extends HTMLElement {
     return this._defaultValue
   }
 
+  /* =============== Properties inherit by ElementInternals ================ */
+  /** The form element associated with.
+   * @see {external:ElementInternals}
+   * @readonly
+   * @type {external:HTMLFormElement|undefined}
+   */
+  get form () {
+    return this.#internals.form
+  }
+
+  /** The labels associated with this element.
+   * @see {external:ElementInternals}
+   * @readonly
+   * @type {external:NodeList}
+   */
+  get labels () {
+    return this.#internals.labels
+  }
+
+  /** Returns the ShadowRoot object associated with this element.
+   * @see {external:ElementInternals}
+   * @readonly
+   * @type {external:ShadowRoot}
+   */
+  get shadowRoot () {
+    return this.#internals.shadowRoot
+  }
+
+  /** A string containing the validation message of this element.
+   * @see {external:ElementInternals}
+   * @readonly
+   * @type {string}
+   */
+  get validationMessage () {
+    return this.#internals.validationMessage
+  }
+
   /* getter and setter for title attribute are part of HTMLElement */
+
+  /* =======================================================================
+     ========================== Private Methods =============================
+     ======================================================================= */
+  // TODO Test each comination of image and default inkl. null and undefinded
+  /** Validate the value of this element.
+   * @returns {undefined}
+   * @private
+   */
+  #validate () {
+    const required = this.hasAttribute('required') && (this.getAttribute('required') === '' || this.getAttribute('required') === 'required')
+    if (required) {
+      if (!this._image.src || this._image.src === this._defaultValue) {
+        this.#internals.setValidity({ valueMissing: true }, 'You need a Picture') // TODO add a map for i18n
+        return
+      }
+    }
+    this.#internals.setValidity({})
+  }
 
   /* =======================================================================
      ========================== Public Methods =============================
@@ -238,28 +325,56 @@ class SelectImageElement extends HTMLElement {
     }
   }
 
+  /* =============== Methods inherit by ElementInternals ================ */
+
+  /** Checks if an element meets any constraint validation rules applied to it.
+   * @see {external:ElementInternals}
+   * @returns {boolean} A boolean value, true if the element meets all validation constraints.
+   */
+  checkValidity () {
+    return this.#internals.checkValidity()
+  }
+
+  /** Checks if an element meets any constraint validation rules applied to it, and also sends a validation message to the user agent.
+   * @see {external:ElementInternals}
+   * @returns {boolean} A boolean value, true if the element meets all validation constraints.
+   */
+  reportValidity () {
+    return this.#internals.reportValidity()
+  }
+
   /* =======================================================================
      =================== Lifecycle of Custom Elements ======================
      ======================================================================= */
 
   connectedCallback () {
     this._defaultValue = this.value
+    // DEBUG: console.log(`Associated Form: ${this.#internals.form?.id || this.#internals.form?.name || this.#internals.form?.action}`);
   }
 
   static get observedAttributes () {
-    return ['value', 'alt', 'disabled', 'selectlabel', 'clearlabel']
+    return ['value', 'alt', 'disabled', 'required', 'selectlabel', 'clearlabel']
   }
 
   attributeChangedCallback (name, oldVal, newVal) {
     switch (name) {
       case 'value':
-        if (!newVal) {
-          this._image.removeAttribute('src')
-          this._revertButton.disabled = true
-        } else {
-          this._image.src = newVal
-          this._revertButton.disabled = false
+        if (newVal !== oldVal) {
+          if (!newVal) {
+            this._image.removeAttribute('src')
+            this._revertButton.disabled = true
+          } else {
+            this._image.src = newVal
+            this._revertButton.disabled = false
+          }
+          // Set the formular element value for form submiting
+          if (this._image.src === this._defaultValue) {
+            this.#internals.setFormValue('')
+          } else {
+            this.#internals.setFormValue(this._image.src || '')
+          }
         }
+        this.#validate()
         break
       case 'alt':
         if (!newVal) {
@@ -276,6 +391,9 @@ class SelectImageElement extends HTMLElement {
           this._selectButton.removeAttribute('disabled')
           this._revertButton.removeAttribute('disabled')
         }
+        break
+      case 'required':
+        this.#validate()
         break
       case 'selectlabel':
         if (!newVal) {
