@@ -40,6 +40,11 @@
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement|MDN web docs}
  */
 
+/** The img HTML element.
+ * @external HTMLImageElement
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement|MDN web docs}
+ */
+
 /** List of DOM nodes.
  * @external NodeList
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/NodeList|MDN web docs}
@@ -59,6 +64,11 @@
 /** Interface for ElementInternals.
  * @external ElementInternals
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals|MDN web docs}
+ */
+
+/** Interface for ShadowRoot.
+ * @external ShadowRoot
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot|MDN web docs}
  */
 
 /** Contains a WebComponent that acts as a form element to select images.
@@ -139,7 +149,7 @@ TEMPLATE.innerHTML = `
  */
 class SelectImageElement extends HTMLElement {
   /** Marks custom element as form item element.
-   * @see  {external:ElementInternals}
+   * @see external:ElementInternals
    * @static
    * @readonly
    * @type {boolean}
@@ -148,7 +158,7 @@ class SelectImageElement extends HTMLElement {
 
   /** The internals of the custom element.
    * @readonly
-   * @type {external:ElementInternals}
+   * @type external:ElementInternals
    * @private
    */
   #internals
@@ -160,8 +170,19 @@ class SelectImageElement extends HTMLElement {
    */
   #defaultValue = undefined
 
+  /** Internal field to get access to the shadow root of the custom element.
+   * @see external:ElementInternals
+   * @private
+   * @readonly
+   * @type {external:ShadowRoot}
+   */
   #shadowRoot
 
+  /** Internal field to get access to the image element inside of the custom element.
+   * @private
+   * @readonly
+   * @type {external:HTMLImageElement}
+   */
   #image
 
   /** Internal field for the button "select" in the shadow DOM.
@@ -231,7 +252,7 @@ class SelectImageElement extends HTMLElement {
 
   /* =============== Properties inherit by ElementInternals ================ */
   /** The form element associated with.
-   * @see {external:ElementInternals}
+   * @see external:ElementInternals
    * @readonly
    * @type {external:HTMLFormElement|undefined}
    */
@@ -240,7 +261,7 @@ class SelectImageElement extends HTMLElement {
   }
 
   /** The labels associated with this element.
-   * @see {external:ElementInternals}
+   * @see external:ElementInternals
    * @readonly
    * @type {external:NodeList}
    */
@@ -249,7 +270,7 @@ class SelectImageElement extends HTMLElement {
   }
 
   /** Returns the ShadowRoot object associated with this element.
-   * @see {external:ElementInternals}
+   * @see external:ElementInternals
    * @readonly
    * @type {external:ShadowRoot}
    */
@@ -258,7 +279,7 @@ class SelectImageElement extends HTMLElement {
   }
 
   /** A string containing the validation message of this element.
-   * @see {external:ElementInternals}
+   * @see external:ElementInternals
    * @readonly
    * @type {string}
    */

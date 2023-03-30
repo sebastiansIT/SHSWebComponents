@@ -8,13 +8,14 @@ You can see some examples as part of the [demo page](./demo.html).
 
 ## Documentation
 
-1. [&lt;sit-select-image&gt;](./doc/CustomElement.md)
-1. [SelectImageElement](./doc/JSAPI.md)
-1. [ShadowDOM](./doc/ShadowDOM.md)
+1. [&lt;sit-select-image&gt;](../CustomElement.md)
+1. [SelectImageElement](../JSAPI.md)
+1. [ShadowDOM](../ShadowDOM.md)
 
 ## Prerequisite
 To use this element the user agent must have support for&hellip;
 
+- [ECMAScript 2022 Private Identifier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields)
 - [ECMAScript 2015 const Keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
 - [ECMAScript 2015 Class Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 - [ECMAScript 2015 Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
