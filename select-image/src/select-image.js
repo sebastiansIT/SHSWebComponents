@@ -30,7 +30,7 @@
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement|MDN web docs}
  */
 
-/** The button HTML element.
+/** The form HTML element.
  * @external HTMLFormElement
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement|MDN web docs}
  */
