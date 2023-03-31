@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!--  Copyright 2019, 2020 Sebastian Spautz
+<!--  Copyright 2019, 2020, 2023 Sebastian Spautz
 
     This File is Part of "SITWebComponents"
     <https://github.com/sebastiansIT/SITWebComponents>.
@@ -78,8 +78,8 @@
         </header>
         <figure>
           <sit-select-image id="demo1"
-           value="https://mir-s3-cdn-cf.behance.net/project_modules/1400/21400b42146087.5802935e8c355.jpg"
-           alt="The Castle in the Sky">
+          value="https://mir-s3-cdn-cf.behance.net/project_modules/1400/21400b42146087.5802935e8c355.jpg"
+          alt="The Castle in the Sky">
           </sit-select-image>
           <figcaption><p><a href="https://www.behance.net/gallery/42146087/The-Castle-in-the-Sky">"The Castle in the Sky"</a>
             by <span>Alex Feliksovich</span> is licensed under
@@ -216,7 +216,8 @@
          <figure>
            <sit-select-image id="demo6"
             value="https://mir-s3-cdn-cf.behance.net/project_modules/fs/d69c4532498439.5ce4441b54851.jpg"
-            alt="Travel begins">
+            alt="Travel begins"
+            required="no">
           </sit-select-image>
           <figcaption><p><a href="https://www.behance.net/gallery/32498439/The-Pirate-Bay">"The Pirate Bay"</a>
             by <span>Alex Feliksovich</span> is licensed under
@@ -242,6 +243,7 @@
             a select-image element with the part() pseudo class.</p></figcaption>
         </figure>
       </section>
+
       <section id="demo7_section">
         <header>
            <h3>JS API</h3>
@@ -255,8 +257,10 @@
          </style>
          <figure>
            <sit-select-image id="demo7"
-           value="https://mir-s3-cdn-cf.behance.net/project_modules/fs/d19ed550000683.58c4664249231.jpg"
-            alt="Ancient Civilizations: Lost & Found part 2">
+            value="https://mir-s3-cdn-cf.behance.net/project_modules/fs/d19ed550000683.58c4664249231.jpg"
+            alt="Ancient Civilizations: Lost & Found part 2"
+            required="required"
+            name="demo7" form="demo8_form">
           </sit-select-image>
           <figcaption><p><a href="https://www.behance.net/gallery/50000683/Ancient-Civilizations-Lost-Found-part-2">"Ancient Civilizations: Lost & Found part 2"</a>
             by <span>Alex Feliksovich</span> is licensed under
@@ -267,6 +271,7 @@
           <button id="demo7_revert" type="button" aria-controls="demo7">revert()</button>
           <button id="demo7_clear" type="button" aria-controls="demo7">clear()</button>
           <button id="demo7_select" type="button" aria-controls="demo7">select()</button>
+          <button id="demo7_validate" type="button" aria-controls="demo7">reportValidity()</button>
         </footer>
         <script>
           document.getElementById('demo7_revert').addEventListener('click', (event) => {
@@ -278,7 +283,34 @@
           document.getElementById('demo7_select').addEventListener('click', (event) => {
             document.getElementById(event.target.getAttribute('aria-controls')).select()
           })
+          document.getElementById('demo7_validate').addEventListener('click', (event) => {
+            document.getElementById(event.target.getAttribute('aria-controls')).reportValidity()
+          })
         </script>
+      </section>
+
+      <section id="demo8_section">
+        <header>
+          <h3>Inside a Form</h3>
+        </header>
+        <form method="get" action="#" id="demo8_form" name="demo8_form">
+          <label for="demo8">Selectable Image Demo 8</label>
+          <figure>
+            <sit-select-image id="demo8" name="demo8" aria-label="Aria Label for Demo 8"
+              value="https://mir-s3-cdn-cf.behance.net/project_modules/fs/03e65a29094307.55e1d4c182fc3.jpg"
+              alt="Valley of swords"
+              title="A Selectable Image (Demo 8)"
+              required>
+            </sit-select-image>
+            <figcaption><p><a href="https://mir-s3-cdn-cf.behance.net/project_modules/fs/03e65a29094307.55e1d4c182fc3.jpg">"Valley of swords"</a>
+              by <span>Alex Feliksovich</span> is licensed under
+              <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=ccsearch&atype=html">CC BY-NC 4.0</a></p>
+            </figcaption>
+          </figure>
+          <input type="submit" value="Submit" />
+        </form>
+      </section>
+
     </main>
   </body>
 </html>

@@ -1,6 +1,6 @@
 {
   "name": "@sebastiansit/webcomponents",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "SebastiansIT WebComponents Collection",
   "browser": "select-image/src/select-image.js",
   "repository": {
@@ -38,7 +38,7 @@
     "jsdoc": "^4.0.2",
     "postcss-html": "^1.3.0",
     "stylelint": "^15.2.0",
-    "stylelint-config-standard": "^30.0.1",
+    "stylelint-config-standard": "^31.0.0",
     "terser": "^5.3.2"
   },
   "scripts": {
@@ -51,6 +51,7 @@
     "report:visual": "npx backstop --config .backstoprc.js openReport",
     "report": "npm run report:visual",
     "minify": "terser select-image/src/select-image.js --compress --output select-image/out/select-image.min.js --source-map \"url='select-image.min.js.map'\" --comments --timings --verbose",
-    "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js"
+    "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js",
+    "start": "npx http-server -p 3001 -o select-image/demo.html"
   }
 }
