@@ -24,7 +24,7 @@
   "files": [
     "*/src"
   ],
-  "type": "module",
+  "type": "commonjs",
   "browserslist": [],
   "devDependencies": {
     "backstopjs": "^6.0.4",
@@ -45,17 +45,18 @@
     "terser": "^5.3.2"
   },
   "scripts": {
-    "backstop:reference": "npx backstop --config .backstoprc.js reference",
+    "backstop:reference": "npx backstop --config .backstoprc.cjs reference",
     "lint:js": "eslint --output-file report/eslint.xml --format checkstyle **/src/*.js",
     "lint:css": "stylelint --output-file report/stylelint.txt **/src/*.js",
     "lint": "npm run lint:js && npm run lint:css",
-    "test:visual": "concurrently --success=first --kill-others \"npx http-server -p 3001 -c-1\" \"npx backstop --config .backstoprc.js test\"",
+    "test:visual": "concurrently --success=first --kill-others \"npx http-server -p 3001 -c-1\" \"npx backstop --config .backstoprc.cjs test\"",
     "test:unit": "jest",
     "test": "npm run lint && npm run test:unit && npm run test:visual",
-    "report:visual": "npx backstop --config .backstoprc.js openReport",
+    "report:visual": "npx backstop --config .backstoprc.cjs openReport",
     "report": "npm run report:visual",
-    "minify": "terser select-image/src/select-image.js --compress --output select-image/out/select-image.min.js --source-map \"url='select-image.min.js.map'\" --comments --timings --verbose",
+    "minify": "terser select-image/src/select-image.js --compress --output select-image/dist/select-image.min.js --source-map \"url='select-image.min.js.map'\" --comments --timings --verbose",
     "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js",
+    "build": "npm run doc && npm run minify",
     "start": "npx http-server -p 3001 -o select-image/demo.html"
   }
 }
