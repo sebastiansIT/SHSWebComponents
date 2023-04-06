@@ -56,7 +56,7 @@
     "report": "npm run report:visual",
     "minify": "terser select-image/src/select-image.js --compress --output select-image/dist/select-image.min.js --source-map \"url='select-image.min.js.map'\" --comments --timings --verbose",
     "doc": "jsdoc -p -r -R ./select-image/README.md -d ./select-image/doc/api select-image/src/select-image.js",
-    "build": "npm run doc && npm run minify",
+    "build": "node build/createdirectories.cjs && npm run doc && npm run minify",
     "start": "npx http-server -p 3001 -o select-image/demo.html"
   }
 }
