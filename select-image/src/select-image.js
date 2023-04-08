@@ -158,7 +158,7 @@ class SelectImageElement extends HTMLElement {
 
   /** The internals of the custom element.
    * @readonly
-   * @type external:ElementInternals
+   * @type {external:ElementInternals}
    * @private
    */
   #internals
@@ -199,6 +199,7 @@ class SelectImageElement extends HTMLElement {
 
   constructor () {
     super()
+
     this.#internals = this.attachInternals()
 
     this.#shadowRoot = this.attachShadow({ mode: 'open' })
@@ -275,7 +276,7 @@ class SelectImageElement extends HTMLElement {
    * @type {external:ShadowRoot}
    */
   get shadowRoot () {
-    return this.#internals.shadowRoot
+    return this.#shadowRoot
   }
 
   /** A string containing the validation message of this element.
@@ -404,6 +405,7 @@ class SelectImageElement extends HTMLElement {
 
   connectedCallback () {
     this.#defaultValue = this.value
+    this.#revertButton.disabled = true
     // DEBUG: console.log(`Associated Form: ${this.#internals.form?.id || this.#internals.form?.name || this.#internals.form?.action}`);
   }
 

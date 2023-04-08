@@ -67,4 +67,5 @@ backstop_data/ci_report/
 
 report
 out
+dist
 select-image/doc/api
