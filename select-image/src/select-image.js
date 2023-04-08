@@ -405,6 +405,7 @@ class SelectImageElement extends HTMLElement {
 
   connectedCallback () {
     this.#defaultValue = this.value
+    this.#revertButton.disabled = true
     // DEBUG: console.log(`Associated Form: ${this.#internals.form?.id || this.#internals.form?.name || this.#internals.form?.action}`);
   }
 

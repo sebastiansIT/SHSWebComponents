@@ -41,6 +41,15 @@ describe('Select Image Element', () => {
                 expect(element.value).toBe(url)
                 expect(element.getAttribute('value')).toBe(url)
             })
+
+            test('should disable reset button if initialised with a value', () => {
+                const url = 'http://test.url/path/image.webp'
+                const element = document.createElement('sit-select-image')
+                element.setAttribute('value', url)
+                document.body.appendChild(element)
+
+                expect(element.shadowRoot.querySelector('#clearImage').hasAttribute('disabled')).toBe(true)
+            })
         })
 
         describe('Alt(ernativ) Attribute', () => {
@@ -97,6 +106,28 @@ describe('Select Image Element', () => {
                 element.setAttribute(attribute, label)
 
                 expect(element.shadowRoot.querySelector(`#${button}`).innerText).toBe(label)
+            })
+        })
+    })
+
+    describe('Custom Element API', () => {
+        describe('connectedCallback()', () => {
+            test('should set given Value as default value on connecting the element to the DOM', () => {
+                const url = 'http://test.url/path/image.webp'
+                const element = document.createElement('sit-select-image')
+                element.setAttribute('value', url)
+                document.body.appendChild(element)
+
+                expect(element.defaultValue).toBe(url)
+            })
+
+            test('should disable the reset button on connecting the element to the DOM', () => {
+                const url = 'http://test.url/path/image.webp'
+                const element = document.createElement('sit-select-image')
+                element.setAttribute('value', url)
+                document.body.appendChild(element)
+
+                expect(element.shadowRoot.querySelector('#clearImage').disabled).toBe(true)
             })
         })
     })
